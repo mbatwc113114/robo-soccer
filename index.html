@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Robo Soccer 2025 Event</title>
+  <style>
+    /* Core colors */
+    :root {
+      --dark-bg: #1a1a2e;
+      --section-bg: #232946;
+      --primary-accent: #00f2fe;
+      --secondary-accent: #f9ed69;
+      --muted: #c5c6c7;
+      --white: #f4f4f4;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--dark-bg);
+      color: var(--white);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    /* Navigation */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background: var(--section-bg);
+      box-shadow: 0 2px 8px #000a;
+      display: flex;
+      justify-content: center;
+      gap: 44px;
+      padding: 18px 0;
+      font-weight: 700;
+    }
+    nav a {
+      color: var(--primary-accent);
+      text-decoration: none;
+      padding: 7px 14px;
+      border-bottom: 3px solid transparent;
+      letter-spacing: 1px;
+      font-size: 1.15em;
+      transition: all 0.2s ease;
+    }
+    nav a.active, nav a:hover {
+      color: var(--secondary-accent);
+      border-bottom: 3px solid var(--secondary-accent);
+    }
+    /* Section styles */
+    section {
+      min-height: 100vh;
+      max-width: 980px;
+      margin: 60px auto 40px auto;
+      border-radius: 32px;
+      padding: 80px 32px 60px 32px;
+      box-shadow: 0 8px 48px #0006;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--section-bg);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Abstract accent for each section */
+    .abstract {
+      position: absolute;
+      top: -80px;
+      right: -100px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, var(--primary-accent) 0%, transparent 90%);
+      opacity: 0.07;
+      z-index: 0;
+    }
+    /* Headers and buttons */
+    h1, h2 {
+      margin-bottom: 24px;
+      color: var(--primary-accent);
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 2.7em;
+      text-shadow: 0 2px 16px #000c;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {font-size: 4em;}
+    p, ul, li {
+      color: var(--white);
+      font-size: 1.35em;
+      text-shadow: 0 2px 7px #0006;
+      position: relative;
+      z-index: 1;
+    }
+    ul {margin: 22px auto 0 auto; padding: 0 0 0 26px; max-width: 700px;}
+    ul li {margin-bottom: 12px;}
+    /* Button styles */
+    button, input[type=submit] {
+      background: var(--secondary-accent);
+      color: var(--section-bg);
+      font-weight: 800;
+      font-size: 1.18em;
+      border: none;
+      border-radius: 32px;
+      margin-top: 35px;
+      padding: 17px 44px;
+      box-shadow: 0 4px 24px #dab22e99;
+      cursor: pointer;
+      letter-spacing: 2px;
+      transition: background 0.17s, color 0.18s;
+      position: relative;
+      z-index: 1;
+    }
+    button:hover, input[type=submit]:hover {
+      background: var(--primary-accent);
+      color: var(--section-bg);
+    }
+    /* Schedule timeline */
+    .timeline {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      padding-top: 15px;
+      justify-content: center;
+    }
+    .match {
+      background: var(--dark-bg);
+      border-left: 7px solid var(--primary-accent);
+      border-radius: 18px;
+      box-shadow: 0 0 18px #00f2fe28 inset;
+      padding: 20px 23px;
+      width: 230px;
+      text-align: left;
+      margin-bottom: 26px;
+      transition: box-shadow 0.2s;
+    }
+    .match:hover {
+      box-shadow: 0 0 31px #f9ed6948, 0 0 18px var(--primary-accent) inset;
+    }
+    .match h3 {
+      margin-top: 0;
+      color: var(--secondary-accent);
+      font-size: 1.12em;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .countdown {
+      margin-top: 18px;
+      color: #00f2fe;
+      font-weight: 900;
+      font-size: 1em;
+    }
+    /* Teams grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 32px;
+      margin-top: 34px;
+      z-index: 1;
+    }
+    .team-card {
+      background: #272758;
+      border-radius: 16px;
+      padding: 19px;
+      color: var(--primary-accent);
+      font-weight: 700;
+      box-shadow: 0 0 14px #00f2fe22 inset;
+      transition: box-shadow 0.19s;
+    }
+    .team-card:hover {
+      box-shadow: 0 0 25px var(--secondary-accent);
+      color: var(--secondary-accent);
+    }
+    .team-card h3 {
+      margin: 0 0 9px 0;
+      color: var(--secondary-accent);
+    }
+    .team-card p {
+      color: var(--white);
+      font-size: 1.08em;
+    }
+    /* Registration form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      z-index: 1;
+      max-width: 400px;
+      margin-top: 2px;
+    }
+    label {
+      color: var(--primary-accent);
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-size: 1em;
+      letter-spacing: 1.1px;
+    }
+    input, select {
+      padding: 13px 15px;
+      margin-bottom: 0;
+      border-radius: 9px;
+      border: none;
+      font-size: 1em;
+      font-weight: 600;
+      box-shadow: 0 2px 12px #0002 inset;
+      outline: none;
+    }
+    input:focus, select:focus {
+      outline: 2px solid var(--primary-accent);
+      background: #64edff13;
+    }
+    /* Contact section */
+    #contact a {
+      color: var(--primary-accent);
+      font-weight: 700;
+      margin-right: 10px;
+    }
+    #contact a:hover {
+      color: var(--secondary-accent);
+    }
+    /* Responsive fixes */
+    @media (max-width: 700px) {
+      section {padding: 48px 8px;}
+      h1, h2 {font-size: 1.6em;}
+      nav {gap: 22px; font-size: 1em;}
+      .abstract {width: 180px; height: 180px; top:-50px; right:-40px;}
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <a href="#home" class="active">Home</a>
+    <a href="#howitworks">How It Works</a>
+    <a href="#teams">Teams & Robots</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#register">Register</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="home">
+    <div class="abstract"></div>
+    <h1>Robo Soccer 2025</h1>
+    <p>Compete in the ultimate robotic soccer challenge! Showcase engineering skills and teamwork on the field of intelligent machines.</p>
+    <button onclick="document.getElementById('register').scrollIntoView({behavior: 'smooth'})">REGISTER NOW</button>
+  </section>
+
+  <section id="howitworks">
+    <div class="abstract"></div>
+    <h2>How It Works</h2>
+    <ul>
+      <li>Build autonomous robots to play soccer in a competitive arena.</li>
+      <li>Matches consist of two halves, each lasting 15 minutes with real-time robotic plays.</li>
+      <li>Robots must act autonomously during matches; only monitoring is allowed.</li>
+      <li>Judging is based on goals, teamwork, and innovative tech.</li>
+      <li>Bonus awards for design, creativity, and sportsmanship.</li>
+    </ul>
+  </section>
+
+  <section id="teams">
+    <div class="abstract"></div>
+    <h2>Teams & Robots</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <h3>Steel Strikers</h3>
+        <p>Fast bots focused on mechanical precision.</p>
+        <p><strong>Region:</strong> North Zone</p>
+      </div>
+      <div class="team-card">
+        <h3>Cyber Dribblers</h3>
+        <p>Expert ball control with strategic AI.</p>
+        <p><strong>Region:</strong> East Zone</p>
+      </div>
+      <div class="team-card">
+        <h3>Robo Hawks</h3>
+        <p>Dynamic defense powered by teamwork algorithms.</p>
+        <p><strong>Region:</strong> South Zone</p>
+      </div>
+      <div class="team-card">
+        <h3>Gear Grinders</h3>
+        <p>Aggressive attacks and powerful motors.</p>
+        <p><strong>Region:</strong> West Zone</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <div class="abstract"></div>
+    <h2>Schedule</h2>
+    <div class="timeline">
+      <div class="match">
+        <h3>Opening Match</h3>
+        <p><strong>Steel Strikers vs Cyber Dribblers</strong></p>
+        <p>Oct 20, 2025 - 10:00 AM</p>
+        <div class="countdown" id="countdown1"></div>
+      </div>
+      <div class="match">
+        <h3>Quarter Final</h3>
+        <p><strong>Robo Hawks vs Gear Grinders</strong></p>
+        <p>Oct 21, 2025 - 2:00 PM</p>
+        <div class="countdown" id="countdown2"></div>
+      </div>
+      <div class="match">
+        <h3>Semi Final</h3>
+        <p><strong>Winner QF1 vs Winner QF2</strong></p>
+        <p>Oct 22, 2025 - 5:00 PM</p>
+        <div class="countdown" id="countdown3"></div>
+      </div>
+      <div class="match">
+        <h3>Final</h3>
+        <p><strong>TBD vs TBD</strong></p>
+        <p>Oct 24, 2025 - 7:00 PM</p>
+        <div class="countdown" id="countdown4"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="register">
+    <div class="abstract"></div>
+    <h2>Register Your Team</h2>
+    <form onsubmit="handleRegistration(event)">
+      <label for="teamName">Team Name</label>
+      <input type="text" id="teamName" name="teamName" required placeholder="Enter your team name" />
+      <label for="captainName">Team Captain</label>
+      <input type="text" id="captainName" name="captainName" required placeholder="Enter captain's name" />
+      <label for="email">Contact Email</label>
+      <input type="email" id="email" name="email" required placeholder="Enter contact email" />
+      <label for="region">Region</label>
+      <select id="region" name="region" required>
+        <option value="">Select region</option>
+        <option value="north">North Zone</option>
+        <option value="east">East Zone</option>
+        <option value="south">South Zone</option>
+        <option value="west">West Zone</option>
+      </select>
+      <input type="submit" value="Submit Registration">
+    </form>
+  </section>
+
+  <section id="contact">
+    <div class="abstract"></div>
+    <h2>Contact</h2>
+    <p>Questions? Email <a href="mailto:robosoccer2025@example.com">robosoccer2025@example.com</a></p>
+    <p>Or call +91 98765 43210</p>
+  </section>
+
+  <script>
+    // Scroll Spy to highlight nav
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 110;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").substring(1) === current) {
+          link.classList.add("active");
+        }
+      });
+    });
+    // Countdown timers
+    function countdown(id, date) {
+      const element = document.getElementById(id);
+      function update() {
+        const now = new Date().getTime();
+        const distance = date - now;
+        if (distance < 0) {
+          element.innerText = "Match Live / Completed";
+          return;
+        }
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000*60*60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000*60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        element.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s left`;
+      }
+      update();
+      setInterval(update, 1000);
+    }
+    countdown('countdown1', new Date('Oct 20, 2025 10:00:00').getTime());
+    countdown('countdown2', new Date('Oct 21, 2025 14:00:00').getTime());
+    countdown('countdown3', new Date('Oct 22, 2025 17:00:00').getTime());
+    countdown('countdown4', new Date('Oct 24, 2025 19:00:00').getTime());
+    // Registration form handler
+    function handleRegistration(event) {
+      event.preventDefault();
+      alert('Thank you for registering your team! We will contact you soon.');
+      event.target.reset();
+      document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
