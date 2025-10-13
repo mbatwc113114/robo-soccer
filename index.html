@@ -1,406 +1,886 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Robo Soccer 2025 Event</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RoboSoccer 2025 — One Page Event</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
-    /* Core colors */
-    :root {
-      --dark-bg: #1a1a2e;
-      --section-bg: #232946;
-      --primary-accent: #00f2fe;
-      --secondary-accent: #f9ed69;
-      --muted: #c5c6c7;
-      --white: #f4f4f4;
+    /* =========================
+       Variables & Theming
+       ========================= */
+    :root{
+      --bg: #071022;
+      --bg-accent: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      --card: rgba(255,255,255,0.03);
+      --muted: #9fb3c8;
+      --accent: #00e0a6;
+      --accent2: #4ee3ff;
+      --text: #e6eef8;
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius: 12px;
+      --nav-height: 72px;
+      --shadow: 0 8px 30px rgba(2,6,23,0.6);
+      --transition: 320ms cubic-bezier(.2,.9,.2,1);
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
-    * {
-      box-sizing: border-box;
+
+    /* Light mode overrides */
+    .light{
+      --bg: #f6fbff;
+      --bg-accent: linear-gradient(180deg, rgba(2,6,23,0.02), transparent);
+      --card: rgba(2,6,23,0.03);
+      --muted: #4b5b6b;
+      --accent: #0b84ff;
+      --accent2: #ff7a59;
+      --text: #071227;
+      --glass: rgba(2,6,23,0.03);
+      --glass-2: rgba(2,6,23,0.02);
+      --shadow: 0 8px 30px rgba(10,20,40,0.06);
     }
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--dark-bg);
-      color: var(--white);
-      scroll-behavior: smooth;
-      overflow-x: hidden;
+
+    /* =========================
+       Global Layout
+       ========================= */
+    html,body{height:100%;scroll-behavior:smooth;}
+    body{
+      margin:0;
+      min-height:100%;
+      background:
+        radial-gradient(900px 400px at 10% 10%, rgba(0,0,0,0.18), transparent),
+        linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 80%, black 10%));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition: background var(--transition), color var(--transition);
+      padding-bottom:40px;
     }
-    /* Navigation */
-    nav {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      background: var(--section-bg);
-      box-shadow: 0 2px 8px #000a;
-      display: flex;
-      justify-content: center;
-      gap: 44px;
-      padding: 18px 0;
-      font-weight: 700;
+
+    .container{ max-width:1100px; margin:0 auto; padding:0 20px; }
+
+    header{
+      height:var(--nav-height); display:flex; align-items:center; justify-content:space-between;
+      position:sticky; top:0; z-index:60; backdrop-filter: blur(8px);
+      background: var(--bg-accent); padding:0 20px; box-shadow: var(--shadow);
     }
-    nav a {
-      color: var(--primary-accent);
-      text-decoration: none;
-      padding: 7px 14px;
-      border-bottom: 3px solid transparent;
-      letter-spacing: 1px;
-      font-size: 1.15em;
-      transition: all 0.2s ease;
+
+    .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; cursor:pointer;}
+    .logo{
+      width:48px;height:48px;border-radius:10px; display:flex;align-items:center;justify-content:center;
+      font-family:"Orbitron"; font-weight:700; letter-spacing:1px;
+      background: linear-gradient(120deg,var(--accent),var(--accent2));
+      color:#001; box-shadow: 0 8px 30px rgba(0,0,0,0.35);
     }
-    nav a.active, nav a:hover {
-      color: var(--secondary-accent);
-      border-bottom: 3px solid var(--secondary-accent);
+    .brand h1{ font-size:1.05rem; margin:0;}
+    .brand p{ margin:0; font-size:0.75rem; color:var(--muted); }
+
+    nav{ display:flex; align-items:center; gap:10px; }
+    .nav-link{
+      color:var(--text); text-decoration:none; font-weight:600; padding:8px 12px; border-radius:8px;
+      transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
     }
-    /* Section styles */
-    section {
-      min-height: 100vh;
-      max-width: 980px;
-      margin: 60px auto 40px auto;
-      border-radius: 32px;
-      padding: 80px 32px 60px 32px;
-      box-shadow: 0 8px 48px #0006;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: var(--section-bg);
-      position: relative;
-      overflow: hidden;
+    .nav-link:hover{ transform:translateY(-3px); box-shadow: 0 8px 28px rgba(2,6,23,0.25); }
+
+    .controls{ display:flex; align-items:center; gap:10px;}
+    .btn{
+      padding:10px 14px; border-radius:10px; border:none; cursor:pointer; font-weight:700;
+      background: linear-gradient(90deg,var(--accent),var(--accent2)); color:#02121a;
+      box-shadow: 0 8px 18px rgba(2,6,23,0.45);
+      transition: transform 160ms ease, box-shadow 160ms ease;
     }
-    /* Abstract accent for each section */
-    .abstract {
-      position: absolute;
-      top: -80px;
-      right: -100px;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, var(--primary-accent) 0%, transparent 90%);
-      opacity: 0.07;
-      z-index: 0;
+    .btn.secondary{ background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.06); box-shadow:none; font-weight:600; }
+    .btn.ghost{ background:transparent; box-shadow:none; color:var(--muted); border:1px dashed rgba(255,255,255,0.03); }
+
+    /* Theme toggle icon */
+    .theme-toggle{ display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:10px; background:var(--card); cursor:pointer; border:1px solid rgba(255,255,255,0.03); }
+
+    /* HERO */
+    .hero{ display:grid; grid-template-columns: 1fr 520px; gap:28px; align-items:center; padding:36px 0;}
+    .hero-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:28px; border-radius:var(--radius); box-shadow:var(--shadow); }
+    .eyebrow{ font-family:"Orbitron"; color:var(--accent); font-weight:700; letter-spacing:1px; font-size:0.82rem; }
+    .hero h2{ margin:8px 0 12px; font-size:2.05rem; }
+    .hero p{ color:var(--muted); margin:0 0 16px 0; line-height:1.5rem; }
+
+    .actions{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+    .chip{ padding:10px 12px; background:var(--glass); border-radius:10px; display:inline-flex; gap:8px; align-items:center; font-weight:600; color:var(--muted); }
+
+    /* Sections */
+    section{ padding:40px 0; scroll-margin-top: calc(var(--nav-height) + 12px); }
+    .section-title{ display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+    .section-title h3{ margin:0; font-size:1.15rem; }
+    .card-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:18px; }
+
+    /* schedule timeline */
+    .timeline{ background:var(--card); padding:18px; border-radius:12px; box-shadow:var(--shadow); }
+    .timeline-item{ display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px dashed rgba(255,255,255,0.03); }
+    .timeline-item:last-child{ border-bottom:none; }
+    .time{ font-family:"Orbitron"; color:var(--accent); min-width:80px; font-size:0.95rem; }
+    .desc{ color:var(--muted); }
+
+    /* rules list */
+    .rules{ background: linear-gradient(180deg,var(--card), transparent); padding:18px; border-radius:12px; box-shadow:var(--shadow); color:var(--muted); }
+    .rules ol{ margin:0; padding-left:1rem; }
+    .rules li{ margin:12px 0; line-height:1.45; }
+
+    /* Register form */
+    .form{ background:var(--card); padding:18px; border-radius:12px; box-shadow:var(--shadow); }
+    .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:12px; }
+    label{ font-weight:700; font-size:0.85rem; }
+    input[type="text"], input[type="email"], textarea, select{
+      padding:10px 12px; border-radius:8px; border:none; outline:none; background:var(--glass-2); color:var(--text); font-size:0.95rem;
     }
-    /* Headers and buttons */
-    h1, h2 {
-      margin-bottom: 24px;
-      color: var(--primary-accent);
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-size: 2.7em;
-      text-shadow: 0 2px 16px #000c;
-      position: relative;
-      z-index: 1;
+    textarea{ min-height:100px; resize:vertical; }
+
+    /* Contact grid */
+    .contact-grid{ display:grid; grid-template-columns:1fr 320px; gap:18px; }
+
+    /* Footer */
+    footer{ padding:24px 0; color:var(--muted); font-size:0.92rem; text-align:center; }
+
+    /* Toast */
+    .toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:28px; background: linear-gradient(90deg,var(--accent),var(--accent2)); color:#02121a; padding:12px 18px; border-radius:12px; box-shadow: 0 12px 36px rgba(0,0,0,0.4); font-weight:700; z-index:80; opacity:0; pointer-events:none; transition: transform 250ms ease, opacity 250ms ease;}
+    .toast.show{ opacity:1; transform: translateX(-50%) translateY(-8px); pointer-events:auto; }
+
+    /* Reveal animation */
+    .reveal{ opacity:0; transform: translateY(18px); transition: var(--transition); }
+    .reveal.show{ opacity:1; transform:none; }
+
+    /* responsive */
+    @media (max-width:1100px){
+      .hero{ grid-template-columns: 1fr; }
+      .card-grid{ grid-template-columns: 1fr; }
+      .contact-grid{ grid-template-columns: 1fr; }
     }
-    h1 {font-size: 4em;}
-    p, ul, li {
-      color: var(--white);
-      font-size: 1.35em;
-      text-shadow: 0 2px 7px #0006;
-      position: relative;
-      z-index: 1;
+
+    /* =========================
+       CSS 3D Arena Styling
+       ========================= */
+    .arena-frame{
+      perspective: 1200px;
+      border-radius:12px;
+      overflow:visible;
+      height:520px;
+      position:relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      box-shadow: var(--shadow);
     }
-    ul {margin: 22px auto 0 auto; padding: 0 0 0 26px; max-width: 700px;}
-    ul li {margin-bottom: 12px;}
-    /* Button styles */
-    button, input[type=submit] {
-      background: var(--secondary-accent);
-      color: var(--section-bg);
-      font-weight: 800;
-      font-size: 1.18em;
-      border: none;
-      border-radius: 32px;
-      margin-top: 35px;
-      padding: 17px 44px;
-      box-shadow: 0 4px 24px #dab22e99;
-      cursor: pointer;
-      letter-spacing: 2px;
-      transition: background 0.17s, color 0.18s;
-      position: relative;
-      z-index: 1;
+
+    .arena{
+      transform-style: preserve-3d;
+      width:100%;
+      height:100%;
+      transition: transform 400ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms;
+      border-radius:12px;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      user-select:none;
+      -webkit-user-select:none;
     }
-    button:hover, input[type=submit]:hover {
-      background: var(--primary-accent);
-      color: var(--section-bg);
+
+    /* pitch (3D-looking) */
+    .pitch{
+      width:860px; height:540px; border-radius:12px; transform: translateZ(0px) rotateX(18deg);
+      background: linear-gradient(180deg, #06423a 0%, #083a2f 100%);
+      box-shadow: inset 0 10px 30px rgba(0,0,0,0.6);
+      position:relative; overflow:hidden;
+      transition: box-shadow var(--transition);
+      display:block;
     }
-    /* Schedule timeline */
-    .timeline {
-      display: flex;
-      gap: 28px;
-      flex-wrap: wrap;
-      padding-top: 15px;
-      justify-content: center;
+
+    /* lines */
+    .pitch:before, .pitch:after{
+      content:"";
+      position:absolute; left:0; right:0; height:2px; background:rgba(255,255,255,0.12);
     }
-    .match {
-      background: var(--dark-bg);
-      border-left: 7px solid var(--primary-accent);
-      border-radius: 18px;
-      box-shadow: 0 0 18px #00f2fe28 inset;
-      padding: 20px 23px;
-      width: 230px;
-      text-align: left;
-      margin-bottom: 26px;
-      transition: box-shadow 0.2s;
+    .pitch:before{ top:50%; transform:translateY(-1px); }
+    .center-circle{
+      position:absolute; left:50%; top:50%; width:140px; height:140px; transform:translate(-50%,-50%); border-radius:50%;
+      border:3px solid rgba(255,255,255,0.14);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4), inset 0 6px 20px rgba(0,0,0,0.5);
     }
-    .match:hover {
-      box-shadow: 0 0 31px #f9ed6948, 0 0 18px var(--primary-accent) inset;
+
+    /* arena walls (visual) */
+    .arena-wall{
+      position:absolute; left:50%; transform:translateX(-50%) translateZ(20px); width:880px; height:60px; bottom:0;
+      background: linear-gradient(180deg, rgba(2,6,23,0.9), rgba(2,6,23,0.7));
+      border-top: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
     }
-    .match h3 {
-      margin-top: 0;
-      color: var(--secondary-accent);
-      font-size: 1.12em;
-      font-weight: 800;
-      margin-bottom: 12px;
+
+    /* robots: simple dom elements absolutely positioned on pitch */
+    .robot{
+      position:absolute; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+      color:#03131a; font-weight:800; font-family:"Orbitron"; box-shadow: 0 10px 24px rgba(0,0,0,0.4);
+      transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms;
+      cursor:pointer;
     }
-    .countdown {
-      margin-top: 18px;
-      color: #00f2fe;
-      font-weight: 900;
-      font-size: 1em;
+    .robot .idBadge{ font-size:14px; color:inherit; }
+
+    /* robot glow */
+    .robot::after{
+      content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:120%; height:120%; border-radius:50%; filter: blur(14px); opacity:0.6;
     }
-    /* Teams grid */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 32px;
-      margin-top: 34px;
-      z-index: 1;
+
+    /* robot highlight */
+    .robot.selected{ transform: scale(1.12); box-shadow: 0 18px 40px rgba(0,0,0,0.6); }
+
+    /* bottom-right HUD for robot info */
+    .robot-info{
+      position:absolute; right:18px; bottom:18px; z-index:25; width:300px; pointer-events:none;
     }
-    .team-card {
-      background: #272758;
-      border-radius: 16px;
-      padding: 19px;
-      color: var(--primary-accent);
-      font-weight: 700;
-      box-shadow: 0 0 14px #00f2fe22 inset;
-      transition: box-shadow 0.19s;
-    }
-    .team-card:hover {
-      box-shadow: 0 0 25px var(--secondary-accent);
-      color: var(--secondary-accent);
-    }
-    .team-card h3 {
-      margin: 0 0 9px 0;
-      color: var(--secondary-accent);
-    }
-    .team-card p {
-      color: var(--white);
-      font-size: 1.08em;
-    }
-    /* Registration form */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      z-index: 1;
-      max-width: 400px;
-      margin-top: 2px;
-    }
-    label {
-      color: var(--primary-accent);
-      font-weight: 800;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      font-size: 1em;
-      letter-spacing: 1.1px;
-    }
-    input, select {
-      padding: 13px 15px;
-      margin-bottom: 0;
-      border-radius: 9px;
-      border: none;
-      font-size: 1em;
-      font-weight: 600;
-      box-shadow: 0 2px 12px #0002 inset;
-      outline: none;
-    }
-    input:focus, select:focus {
-      outline: 2px solid var(--primary-accent);
-      background: #64edff13;
-    }
-    /* Contact section */
-    #contact a {
-      color: var(--primary-accent);
-      font-weight: 700;
-      margin-right: 10px;
-    }
-    #contact a:hover {
-      color: var(--secondary-accent);
-    }
-    /* Responsive fixes */
-    @media (max-width: 700px) {
-      section {padding: 48px 8px;}
-      h1, h2 {font-size: 1.6em;}
-      nav {gap: 22px; font-size: 1em;}
-      .abstract {width: 180px; height: 180px; top:-50px; right:-40px;}
-    }
+    .robot-info .card{ pointer-events:auto; padding:12px; border-radius:10px; background:var(--card); box-shadow:var(--shadow); color:var(--muted); }
+
+    /* arena controls */
+    .arena-controls{ position:absolute; left:18px; top:18px; z-index:30; display:flex; flex-direction:column; gap:10px; }
+    .arena-controls .btn{ font-size:0.9rem; padding:8px 10px; }
+
+    /* subtle keyframes */
+    @keyframes floaty { 0%{ transform: translateY(0px) } 50%{ transform: translateY(-8px) } 100%{ transform: translateY(0px) } }
+    .ambient-floating{ animation: floaty 4.4s ease-in-out infinite; }
+
+    /* micro interactions */
+    button:active{ transform:translateY(2px) scale(0.995); }
+
   </style>
 </head>
 <body>
-  <nav id="navbar">
-    <a href="#home" class="active">Home</a>
-    <a href="#howitworks">How It Works</a>
-    <a href="#teams">Teams & Robots</a>
-    <a href="#schedule">Schedule</a>
-    <a href="#register">Register</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <header>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:0;">
+      <div style="display:flex;gap:18px;align-items:center;">
+        <a class="brand" id="homeBtn">
+          <div class="logo">RS</div>
+          <div>
+            <h1>RoboSoccer 2025</h1>
+            <p>Intercollegiate Robotics Tournament</p>
+          </div>
+        </a>
 
-  <section id="home">
-    <div class="abstract"></div>
-    <h1>Robo Soccer 2025</h1>
-    <p>Compete in the ultimate robotic soccer challenge! Showcase engineering skills and teamwork on the field of intelligent machines.</p>
-    <button onclick="document.getElementById('register').scrollIntoView({behavior: 'smooth'})">REGISTER NOW</button>
-  </section>
+        <nav>
+          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" href="#schedule">Schedule</a>
+          <a class="nav-link" href="#rules">Rules & Regulation</a>
+          <a class="nav-link" href="#arena">3D Arena</a>
+          <a class="nav-link" href="#register">Register</a>
+          <a class="nav-link" href="#contact">Contact</a>
+        </nav>
+      </div>
 
-  <section id="howitworks">
-    <div class="abstract"></div>
-    <h2>How It Works</h2>
-    <ul>
-      <li>Build autonomous robots to play soccer in a competitive arena.</li>
-      <li>Matches consist of two halves, each lasting 15 minutes with real-time robotic plays.</li>
-      <li>Robots must act autonomously during matches; only monitoring is allowed.</li>
-      <li>Judging is based on goals, teamwork, and innovative tech.</li>
-      <li>Bonus awards for design, creativity, and sportsmanship.</li>
-    </ul>
-  </section>
+      <div class="controls">
+        <div id="themeToggle" class="theme-toggle" title="Toggle theme">
+          <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" style="display:none">
+            <path d="M12 4V2M12 22v-2M4.22 4.22L2.81 2.81M21.19 21.19l-1.41-1.41M2 12H4M20 12h2M4.22 19.78l-1.41 1.41M21.19 2.81l-1.41 1.41" stroke="#ffcc66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="3" stroke="#ffcc66" stroke-width="1.6"/>
+          </svg>
+          <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" style="display:none">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="#cdefff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span id="themeLabel" style="font-weight:700;color:var(--muted);font-size:0.95rem">Theme</span>
+        </div>
 
-  <section id="teams">
-    <div class="abstract"></div>
-    <h2>Teams & Robots</h2>
-    <div class="team-grid">
-      <div class="team-card">
-        <h3>Steel Strikers</h3>
-        <p>Fast bots focused on mechanical precision.</p>
-        <p><strong>Region:</strong> North Zone</p>
-      </div>
-      <div class="team-card">
-        <h3>Cyber Dribblers</h3>
-        <p>Expert ball control with strategic AI.</p>
-        <p><strong>Region:</strong> East Zone</p>
-      </div>
-      <div class="team-card">
-        <h3>Robo Hawks</h3>
-        <p>Dynamic defense powered by teamwork algorithms.</p>
-        <p><strong>Region:</strong> South Zone</p>
-      </div>
-      <div class="team-card">
-        <h3>Gear Grinders</h3>
-        <p>Aggressive attacks and powerful motors.</p>
-        <p><strong>Region:</strong> West Zone</p>
+        <button class="btn" id="quickRegister">Register</button>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section id="schedule">
-    <div class="abstract"></div>
-    <h2>Schedule</h2>
-    <div class="timeline">
-      <div class="match">
-        <h3>Opening Match</h3>
-        <p><strong>Steel Strikers vs Cyber Dribblers</strong></p>
-        <p>Oct 20, 2025 - 10:00 AM</p>
-        <div class="countdown" id="countdown1"></div>
-      </div>
-      <div class="match">
-        <h3>Quarter Final</h3>
-        <p><strong>Robo Hawks vs Gear Grinders</strong></p>
-        <p>Oct 21, 2025 - 2:00 PM</p>
-        <div class="countdown" id="countdown2"></div>
-      </div>
-      <div class="match">
-        <h3>Semi Final</h3>
-        <p><strong>Winner QF1 vs Winner QF2</strong></p>
-        <p>Oct 22, 2025 - 5:00 PM</p>
-        <div class="countdown" id="countdown3"></div>
-      </div>
-      <div class="match">
-        <h3>Final</h3>
-        <p><strong>TBD vs TBD</strong></p>
-        <p>Oct 24, 2025 - 7:00 PM</p>
-        <div class="countdown" id="countdown4"></div>
-      </div>
-    </div>
-  </section>
+  <main class="container">
+    <!-- HERO -->
+    <section id="home" class="hero reveal">
+      <div class="hero-card">
+        <div class="eyebrow">ROBO SOCCER — BATTLE FOR THE CUP</div>
+        <h2>RoboSoccer 2025 — Where bots play, teams win</h2>
+        <p>Build, program and compete with autonomous robots on our interactive 3D arena. Prizes, internships, workshops and a day of high-energy robotics sport. All experience levels welcome.</p>
 
-  <section id="register">
-    <div class="abstract"></div>
-    <h2>Register Your Team</h2>
-    <form onsubmit="handleRegistration(event)">
-      <label for="teamName">Team Name</label>
-      <input type="text" id="teamName" name="teamName" required placeholder="Enter your team name" />
-      <label for="captainName">Team Captain</label>
-      <input type="text" id="captainName" name="captainName" required placeholder="Enter captain's name" />
-      <label for="email">Contact Email</label>
-      <input type="email" id="email" name="email" required placeholder="Enter contact email" />
-      <label for="region">Region</label>
-      <select id="region" name="region" required>
-        <option value="">Select region</option>
-        <option value="north">North Zone</option>
-        <option value="east">East Zone</option>
-        <option value="south">South Zone</option>
-        <option value="west">West Zone</option>
-      </select>
-      <input type="submit" value="Submit Registration">
-    </form>
-  </section>
+        <div class="actions">
+          <button class="btn" id="viewScheduleBtn">View Schedule</button>
+          <button class="btn secondary" id="viewRulesBtn">View Rules</button>
+          <button class="btn ghost" id="startTourBtn">Start Arena Tour</button>
+        </div>
 
-  <section id="contact">
-    <div class="abstract"></div>
-    <h2>Contact</h2>
-    <p>Questions? Email <a href="mailto:robosoccer2025@example.com">robosoccer2025@example.com</a></p>
-    <p>Or call +91 98765 43210</p>
-  </section>
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <div class="chip">📍 Venue: Tech Dome, City Campus</div>
+          <div class="chip">🗓️ Date: Nov 12, 2025</div>
+          <div class="chip">🏆 Prize Pool: ₹1,00,000 + Internships</div>
+        </div>
+      </div>
+
+      <!-- small arena preview -->
+      <div>
+        <div class="arena-frame reveal" id="arenaPreviewWrap" style="height:340px;">
+          <div class="arena" id="arenaPreview" title="Drag to rotate">
+            <div class="pitch" id="pitchPreview">
+              <div class="center-circle"></div>
+              <div class="arena-wall"></div>
+              <!-- robots will be injected here -->
+            </div>
+          </div>
+
+          <div class="arena-controls" style="right:18px; top:18px; position:absolute;">
+            <button class="btn" id="simStart">Start Simulation</button>
+            <button class="btn secondary" id="addRobot">Add Robot</button>
+            <button class="btn secondary" id="resetArena">Reset Arena</button>
+          </div>
+
+          <div class="robot-info" id="miniRobotInfo"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule" class="reveal">
+      <div class="section-title"><h3>Schedule</h3></div>
+
+      <div class="timeline">
+        <!-- Synthetic schedule data -->
+        <div class="timeline-item">
+          <div class="time">08:30</div>
+          <div><strong>Venue Open & Team Registration</strong><div class="desc">Team check-in, kit distribution and safety inspection. Technical stewards will verify battery logs.</div></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time">09:30</div>
+          <div><strong>Opening Ceremony</strong><div class="desc">Welcome address, sponsors, and tournament overview by Head Organizer.</div></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time">10:15</div>
+          <div><strong>Rules Briefing & Demo Match</strong><div class="desc">Referees explain points, fouls and emergency procedures. A demo match will showcase expected behavior.</div></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time">11:00</div>
+          <div><strong>Group Stage Matches</strong><div class="desc">Round robin in pools. Each match: 2 halves × 3 minutes, 1 minute halftime.</div></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time">14:30</div>
+          <div><strong>Lunch & Tech Talks</strong><div class="desc">Panel: "Autonomous navigation for small robots". Limited seats.</div></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time">16:00</div>
+          <div><strong>Elimination Rounds</strong><div class="desc">Quarterfinals, Semi-finals and Finals in elimination bracket.</div></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time">18:30</div>
+          <div><strong>Final & Awards</strong><div class="desc">Trophy, cash prizes and internship offers. Closing remarks and group photo.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RULES -->
+    <section id="rules" class="reveal">
+      <div class="section-title"><h3>Rules & Regulation</h3></div>
+
+      <div class="rules">
+        <ol>
+          <li><strong>Team composition</strong>: Maximum <em>4 members</em> per team — one designated captain. Each team must provide emergency contact details during registration.</li>
+          <li><strong>Robot dimensions</strong>: Maximum footprint <em>35 cm × 35 cm</em>, max height 40 cm. Max weight <em>6 kg</em> including battery.</li>
+          <li><strong>Power</strong>: Li-ion/LiPo allowed only if packed and fitted with a protection circuit. Teams must declare battery type and provide a spare fuse or switch.</li>
+          <li><strong>Autonomy</strong>: Robots operate <em>autonomously</em> during matches. No remote control allowed after the match has started. Manual override (E-stop) required for safety.</li>
+          <li><strong>Match conduct</strong>: Match = two halves of 3 minutes. Sudden-death overtime (first goal) if tied. Deliberate physical sabotage or interference is grounds for immediate disqualification.</li>
+          <li><strong>Goals & scoring</strong>: Each goal = 1 point. An own-goal counts for the opposing team. Referee decisions are final; protests must be lodged within 10 minutes of match end with a refundable protest fee.</li>
+          <li><strong>Safety</strong>: Sharp edges, flying projectiles, or exposed terminals are prohibited. Non-compliant robots will be barred until corrected.</li>
+          <li><strong>Fair play</strong>: Unsportsmanlike conduct, aggressive hacking or attempts at disabling opposing teams result in penalties or bans from future tournaments.</li>
+          <li><strong>Appeals</strong>: Protests reviewed by a 3-person jury. Fee: ₹200 (refundable if upheld). Appeals must be submitted in writing within 10 minutes of match conclusion.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 3D ARENA SECTION (CSS 3D) -->
+    <section id="arena" class="reveal">
+      <div class="section-title"><h3>Interactive 3D Arena (CSS 3D)</h3></div>
+
+      <div class="arena-frame" style="height:680px;">
+        <div class="arena" id="arenaFull" title="Drag to rotate and scroll to zoom">
+          <div class="pitch" id="pitchFull">
+            <div class="center-circle"></div>
+            <div class="arena-wall"></div>
+            <!-- robots injected here -->
+          </div>
+        </div>
+
+        <div class="arena-controls" style="left:18px; top:18px;">
+          <button class="btn" id="simStartLarge">Start Simulation</button>
+          <button class="btn secondary" id="pauseSim">Pause</button>
+          <button class="btn secondary" id="addRobotLarge">Add Robot</button>
+          <button class="btn secondary" id="resetArenaLarge">Reset</button>
+          <button class="btn secondary" id="inspectBtn">Inspect</button>
+          <button class="btn secondary" id="toggleGrid">Toggle Grid</button>
+        </div>
+
+        <div class="robot-info" id="robotInfoLarge"></div>
+      </div>
+      <p style="margin-top:8px;color:var(--muted);">Tip: Drag the arena to change view. Scroll to zoom. Click a robot to inspect it. The arena is a CSS 3D simulation meant for preview/testing.</p>
+    </section>
+
+    <!-- REGISTER -->
+    <section id="register" class="reveal">
+      <div class="section-title"><h3>Register</h3></div>
+
+      <div class="card-grid">
+        <div class="form">
+          <div class="field"><label for="teamName">Team Name</label><input id="teamName" type="text" placeholder="RoboStrikers"></div>
+          <div class="field"><label for="college">College / Organization</label><input id="college" type="text" placeholder="Your college"></div>
+          <div class="field"><label for="email">Contact Email</label><input id="email" type="email" placeholder="captain@example.com"></div>
+          <div class="field"><label for="members">Team Members</label><textarea id="members" placeholder="Member1, Member2, Member3"></textarea></div>
+
+          <div style="display:flex;gap:10px;">
+            <button class="btn" id="submitRegister">Submit Registration</button>
+            <button class="btn secondary" id="downloadRules">Download Rules</button>
+          </div>
+        </div>
+
+        <div class="form">
+          <h4 style="margin-top:0;">Why compete?</h4>
+          <ul class="muted">
+            <li>Real-world robotics challenges — mechanical design, control and autonomy.</li>
+            <li>Network with industry and sponsors; interviews & internship opportunities.</li>
+            <li>Hands-on workshops for participants (limited seats, register early).</li>
+            <li>Cash prizes, trophies and certificates for winners and runner-ups.</li>
+          </ul>
+          <hr style="border-color:rgba(255,255,255,0.03);margin:18px 0;">
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <div class="chip">Team slots left: <strong style="margin-left:8px">24</strong></div>
+            <div class="chip">Registration fee: ₹500/team</div>
+            <div class="chip">Contact: events@robosoccer.org</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <div class="section-title"><h3>Contact</h3></div>
+
+      <div class="contact-grid">
+        <div class="form">
+          <div class="field"><label for="cname">Full name</label><input id="cname" type="text" placeholder="Your name"></div>
+          <div class="field"><label for="cemail">Email</label><input id="cemail" type="email" placeholder="you@example.com"></div>
+          <div class="field"><label for="cmsg">Message</label><textarea id="cmsg" placeholder="How can we help?"></textarea></div>
+          <div style="display:flex;gap:10px;">
+            <button class="btn" id="sendMsg">Send Message</button>
+            <button class="btn secondary" id="emailContact">Email: events@robosoccer.org</button>
+          </div>
+        </div>
+
+        <div style="padding:18px;border-radius:12px;background:var(--card);box-shadow:var(--shadow);">
+          <h4 style="margin-top:0">Event Organizers</h4>
+          <p class="muted">TechSoc Robotics Club<br>City Campus, Tech Dome</p>
+          <div style="margin-top:14px;">
+            <p class="muted" style="margin:6px 0">Follow us</p>
+            <div style="display:flex;gap:10px;">
+              <a class="btn secondary" href="#" onclick="return false;">Instagram</a>
+              <a class="btn secondary" href="#" onclick="return false;">LinkedIn</a>
+              <a class="btn secondary" href="#" onclick="return false;">YouTube</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © RoboSoccer 2025 — Built with ♥ for robotics. <span style="color:var(--muted)">Design: CSS 3D Arena • Dark/Light • Animated • Single Page</span>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast">Saved</div>
 
   <script>
-    // Scroll Spy to highlight nav
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 110;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute("id");
-        }
-      });
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href").substring(1) === current) {
-          link.classList.add("active");
-        }
+    /* =========================
+       UI Utilities & Theme
+       ========================= */
+    const body = document.body;
+    const toastEl = document.getElementById('toast');
+    function showToast(msg='Done', ms=2400){
+      toastEl.textContent = msg;
+      toastEl.classList.add('show');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(()=> toastEl.classList.remove('show'), ms);
+    }
+
+    // init theme from localStorage
+    const saved = localStorage.getItem('robosoccer-theme') || 'dark';
+    if(saved === 'light') body.classList.add('light');
+    updateThemeIcon();
+
+    document.getElementById('themeToggle').addEventListener('click', ()=>{
+      body.classList.toggle('light');
+      const isLight = body.classList.contains('light');
+      localStorage.setItem('robosoccer-theme', isLight ? 'light' : 'dark');
+      updateThemeIcon();
+      showToast(isLight ? 'Light mode' : 'Dark mode');
+    });
+
+    function updateThemeIcon(){
+      const isLight = body.classList.contains('light');
+      document.getElementById('iconSun').style.display = isLight ? 'none' : 'inline';
+      document.getElementById('iconMoon').style.display = isLight ? 'inline' : 'none';
+      document.getElementById('themeLabel').textContent = isLight ? 'Light' : 'Dark';
+      // if no icons, set both appropriately
+      if(!document.getElementById('iconSun')) return;
+    }
+
+    // nav links smooth scroll with reveal
+    document.querySelectorAll('a.nav-link').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
       });
     });
-    // Countdown timers
-    function countdown(id, date) {
-      const element = document.getElementById(id);
-      function update() {
-        const now = new Date().getTime();
-        const distance = date - now;
-        if (distance < 0) {
-          element.innerText = "Match Live / Completed";
+
+    // quick register button
+    document.getElementById('quickRegister').addEventListener('click', ()=> location.href = '#register');
+    document.getElementById('viewScheduleBtn').addEventListener('click', ()=> location.href = '#schedule');
+    document.getElementById('viewRulesBtn').addEventListener('click', ()=> location.href = '#rules');
+
+    // scroll reveal using IntersectionObserver
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en => {
+        if(en.isIntersecting) { en.target.classList.add('show'); io.unobserve(en.target); }
+      });
+    }, {threshold: 0.12});
+    reveals.forEach(r => io.observe(r));
+
+    /* =========================
+       Registration & Contact (mock)
+       ========================= */
+    document.getElementById('submitRegister').addEventListener('click', ()=>{
+      const team = document.getElementById('teamName').value.trim();
+      const college = document.getElementById('college').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if(!team || !college || !email) {
+        showToast('Fill Team, College & Email');
+        return;
+      }
+      // mock submit
+      showToast(`Registration submitted — confirmation sent to ${email}`, 3200);
+      document.getElementById('teamName').value='';
+      document.getElementById('members').value='';
+    });
+
+    document.getElementById('sendMsg').addEventListener('click', ()=>{
+      const name = document.getElementById('cname').value.trim();
+      const email = document.getElementById('cemail').value.trim();
+      if(!name || !email){ showToast('Please provide name & email'); return; }
+      showToast('Message sent — we will contact you soon', 2500);
+      document.getElementById('cname').value=''; document.getElementById('cmsg').value='';
+    });
+
+    document.getElementById('emailContact').addEventListener('click', ()=> {
+      showToast('Open your mail client to email events@robosoccer.org', 2200);
+    });
+
+    // Download rules as text file
+    document.getElementById('downloadRules').addEventListener('click', ()=>{
+      const rules = document.querySelector('#rules .rules').innerText;
+      const blob = new Blob([rules], {type:'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'RoboSoccer_Rules.txt';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+      showToast('Rules downloaded');
+    });
+
+    /* =========================
+       CSS 3D Arena Logic (Option B)
+       =========================
+       Behaviour:
+       - Pitch is a DOM element in 3D space. We rotate the .arena container with pointer drag to simulate camera orbit.
+       - Robots are absolutely positioned elements inside the pitch. They move by JS animation when simulation runs.
+       - Click a robot to inspect: shows info in a HUD.
+       - Add Robot / Reset / Start / Pause functionality provided.
+       ========================= */
+
+    // Helpers
+    function rand(min, max){ return Math.random()*(max-min) + min; }
+    function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+
+    // Arena instances for preview and large
+    class CssArena {
+      constructor({pitchEl, infoEl=null, initial=4, idPrefix='A'}) {
+        this.pitch = pitchEl;
+        this.infoEl = infoEl;
+        this.robots = []; // {id, el, x, y, vx, vy, color}
+        this.simRunning = false;
+        this.idPrefix = idPrefix;
+        this.zoom = 0.0; // transform z
+        this.rotationX = 18; // degrees
+        this.rotationY = 0;
+        this.binds();
+        this.reset();
+        for(let i=0;i<initial;i++) this.addRobot();
+        this.tick = this.tick.bind(this);
+        requestAnimationFrame(this.tick);
+      }
+
+      binds(){
+        // pointer drag to rotate parent .arena
+        const arenaNode = this.pitch.parentElement;
+        let dragging = false, last = null;
+        arenaNode.addEventListener('pointerdown', (e)=>{
+          dragging = true; last = {x:e.clientX, y:e.clientY};
+          arenaNode.setPointerCapture && arenaNode.setPointerCapture(e.pointerId);
+        });
+        window.addEventListener('pointermove', (e)=>{
+          if(!dragging) return;
+          const dx = e.clientX - last.x;
+          const dy = e.clientY - last.y;
+          last = {x:e.clientX, y:e.clientY};
+          this.rotationY = (this.rotationY + dx*0.25) % 360;
+          this.rotationX = clamp(this.rotationX - dy*0.18, -30, 60);
+          this.updateTransform();
+        });
+        window.addEventListener('pointerup', (e)=>{
+          dragging = false;
+        });
+
+        // zoom with wheel
+        arenaNode.addEventListener('wheel', (e)=>{
+          e.preventDefault();
+          this.zoom = clamp(this.zoom + e.deltaY * 0.0025, -0.6, 1.2);
+          this.updateTransform();
+        });
+
+        // click on robots
+        this.pitch.addEventListener('click', (e)=>{
+          const target = e.target.closest('.robot');
+          if(target){
+            const idx = Number(target.dataset.idx);
+            this.selectRobot(idx);
+          } else {
+            this.selectRobot(null);
+          }
+        });
+      }
+
+      updateTransform(){
+        // Compose transforms for .arena .pitch element to create 3D look
+        const arenaNode = this.pitch.parentElement;
+        const tx = this.zoom * 280; // Z translation
+        arenaNode.style.transform = `translateZ(${tx}px) rotateX(${this.rotationX}deg) rotateY(${this.rotationY}deg)`;
+      }
+
+      addRobot(){
+        const idx = this.robots.length + 1;
+        const id = `${this.idPrefix}${idx}`;
+        const color = `hsl(${Math.floor(rand(0,360))}deg 80% 55%)`;
+        const el = document.createElement('div');
+        el.className = 'robot ambient-floating';
+        el.style.background = color;
+        el.dataset.idx = idx;
+        el.title = `Robot ${id}`;
+        el.innerHTML = `<span class="idBadge">${idx}</span>`;
+        this.pitch.appendChild(el);
+
+        // position: percent within pitch bounds
+        const w = this.pitch.clientWidth, h = this.pitch.clientHeight;
+        const x = rand(0.08, 0.92), y = rand(0.08, 0.92); // normalized positions
+        const vx = rand(-0.0025, 0.0025), vy = rand(-0.0025, 0.0025);
+        const robot = { id, el, x, y, vx, vy, color, speedFactor: rand(0.6, 1.3) };
+        this.robots.push(robot);
+        this.placeRobot(robot);
+        return robot;
+      }
+
+      placeRobot(robot){
+        // convert normalized x,y to pixel positions inside pitch
+        const w = this.pitch.clientWidth, h = this.pitch.clientHeight;
+        const px = Math.round(robot.x * w);
+        const py = Math.round(robot.y * h);
+        robot.el.style.left = `${px - 24}px`;
+        robot.el.style.top = `${py - 24}px`;
+        // glow color set via pseudo element; use inline style for box-shadow and after-element effect
+        robot.el.style.boxShadow = `0 10px 28px ${this.hexAlpha(robot.color||robot.color, 0.28)}`;
+        robot.el.style.setProperty('--glow-color', robot.color);
+        robot.el.style.setProperty('transform-origin', 'center center');
+      }
+
+      hexAlpha(hsl, alpha){
+        // convert hsl string to rgba fallback for shadow
+        // crude approach: use same color but with alpha in box-shadow, CSS accepts rgba
+        // return hsl replaced with rgba if possible else fallback
+        return hsl;
+      }
+
+      reset(){
+        // remove robots
+        for(const r of this.robots){ r.el.remove(); }
+        this.robots = [];
+        if(this.infoEl) this.infoEl.innerHTML = '';
+        this.selectRobot(null);
+      }
+
+      start(){
+        this.simRunning = true;
+      }
+      pause(){
+        this.simRunning = false;
+      }
+
+      selectRobot(index){
+        // clear all
+        this.robots.forEach(r => r.el.classList.remove('selected'));
+        if(index == null) {
+          if(this.infoEl) this.infoEl.innerHTML = '';
           return;
         }
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000*60*60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000*60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        element.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s left`;
+        const r = this.robots[index - 1];
+        if(!r) return;
+        r.el.classList.add('selected');
+        if(this.infoEl){
+          this.infoEl.innerHTML = `
+            <div class="card">
+              <div style="font-weight:800;color:var(--accent);">Robot ${r.id}</div>
+              <div style="margin-top:8px;color:var(--muted)">Color: ${r.color}</div>
+              <div style="margin-top:6px;color:var(--muted)">Position: x:${(r.x*100).toFixed(1)}%, y:${(r.y*100).toFixed(1)}%</div>
+              <div style="margin-top:8px">
+                <button class="btn" id="followBtn">Follow</button>
+                <button class="btn secondary" id="stopBtn">Stop</button>
+              </div>
+            </div>
+          `;
+          // attach follow/stop buttons (functional mock)
+          document.getElementById('followBtn')?.addEventListener('click', ()=> {
+            showToast(`Locked camera on ${r.id}`);
+            // in CSS arena we can't move camera to robot, so we pulse highlight
+            r.el.classList.add('ambient-floating');
+          });
+          document.getElementById('stopBtn')?.addEventListener('click', ()=> {
+            showToast(`${r.id} stopped`);
+            r.vx = r.vy = 0;
+          });
+        }
       }
-      update();
-      setInterval(update, 1000);
+
+      tick(ts){
+        // simulation loop
+        if(this.simRunning){
+          for(const r of this.robots){
+            // random wandering
+            r.x += r.vx * r.speedFactor;
+            r.y += r.vy * r.speedFactor;
+            // bounce inside bounds
+            if(r.x < 0.06 || r.x > 0.94){ r.vx *= -1; r.x = clamp(r.x, 0.06, 0.94); }
+            if(r.y < 0.06 || r.y > 0.94){ r.vy *= -1; r.y = clamp(r.y, 0.06, 0.94); }
+            // small random perturbations
+            if(Math.random() < 0.01){ r.vx += rand(-0.0006, 0.0006); r.vy += rand(-0.0006, 0.0006); }
+            this.placeRobot(r);
+          }
+        }
+        requestAnimationFrame(this.tick.bind(this));
+      }
     }
-    countdown('countdown1', new Date('Oct 20, 2025 10:00:00').getTime());
-    countdown('countdown2', new Date('Oct 21, 2025 14:00:00').getTime());
-    countdown('countdown3', new Date('Oct 22, 2025 17:00:00').getTime());
-    countdown('countdown4', new Date('Oct 24, 2025 19:00:00').getTime());
-    // Registration form handler
-    function handleRegistration(event) {
-      event.preventDefault();
-      alert('Thank you for registering your team! We will contact you soon.');
-      event.target.reset();
-      document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+
+    // create two arenas: preview and large
+    const pitchPreview = document.getElementById('pitchPreview');
+    const arenaPreview = new CssArena({ pitchEl: pitchPreview, infoEl: document.getElementById('miniRobotInfo'), initial: 3, idPrefix:'P' });
+
+    const pitchFull = document.getElementById('pitchFull');
+    const arenaFull = new CssArena({ pitchEl: pitchFull, infoEl: document.getElementById('robotInfoLarge'), initial: 5, idPrefix:'F' });
+
+    // Buttons small
+    document.getElementById('simStart').addEventListener('click', ()=> { arenaPreview.start(); showToast('Preview sim started'); });
+    document.getElementById('addRobot').addEventListener('click', ()=> { arenaPreview.addRobot(); showToast('Robot added'); });
+    document.getElementById('resetArena').addEventListener('click', ()=> { arenaPreview.reset(); arenaPreview.addRobot(); arenaPreview.addRobot(); showToast('Preview arena reset'); });
+
+    // Buttons large
+    document.getElementById('simStartLarge').addEventListener('click', ()=> { arenaFull.start(); showToast('Simulation running'); });
+    document.getElementById('pauseSim').addEventListener('click', ()=> { arenaFull.pause(); showToast('Simulation paused'); });
+    document.getElementById('addRobotLarge').addEventListener('click', ()=> { arenaFull.addRobot(); showToast('Robot added'); });
+    document.getElementById('resetArenaLarge').addEventListener('click', ()=> { arenaFull.reset(); for(let i=0;i<5;i++) arenaFull.addRobot(); showToast('Arena reset'); });
+    document.getElementById('toggleGrid').addEventListener('click', ()=>{
+      // toggle the visibility of center circle & lines to simulate grid
+      const cs = document.querySelectorAll('.center-circle');
+      cs.forEach(c => c.style.display = (c.style.display === 'none' ? 'block' : 'none'));
+      showToast('Toggled center circle');
+    });
+
+    // inspect button (simulate click on the first robot)
+    document.getElementById('inspectBtn').addEventListener('click', ()=>{
+      if(arenaFull.robots.length) {
+        arenaFull.selectRobot(1);
+        showToast('Inspecting Robot 1');
+      } else showToast('No robots to inspect');
+    });
+
+    // start/stop large together with preview optional
+    document.getElementById('startTourBtn').addEventListener('click', ()=> {
+      // start both sims for quick demo
+      arenaPreview.start(); arenaFull.start();
+      showToast('Arena tour started — simulations running');
+      location.href = '#arena';
+    });
+
+    // initial hints
+    showToast('RoboSoccer page ready', 1600);
+
+    /* =========================
+       Small UI niceties
+       ========================= */
+    // Fake "Start Simulation" of match to animate robots' speeds or colors (not a physics sim)
+    // Already handled in CssArena.start/pause.
+
+    // Keep pitch sizing responsive on resize
+    function handleResize(){
+      // reposition robots for consistent layout
+      setTimeout(()=> {
+        // force placing elements again
+        arenaPreview.robots.forEach(r => arenaPreview.placeRobot(r));
+        arenaFull.robots.forEach(r => arenaFull.placeRobot(r));
+      }, 60);
     }
+    window.addEventListener('resize', handleResize);
+
+    // Accessibility: focusable register button
+    document.getElementById('quickRegister').addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter') location.href = '#register';
+    });
+
   </script>
 </body>
 </html>
+    <!-- /* 3D arena styles */
+    .arena-frame{
+      position:relative; width:100%; height:100%; border-radius:12px; overflow:hidden; background:var(--card);
+      box-shadow: var(--shadow);
+      perspective: 900px;
+      user-select:none;
+    }
+    .arena-frame:hover{ box-shadow: 0 12px 36px rgba(0,0,0,0.5); }
+
+    /* toast */
+    .toast{
+      position:fixed; bottom:18px; left:50%; transform:translateX(-50%); padding:10px 18px; border-radius:24px; background:var(--accent);
+      color:#03131a; font-weight:700; font-family:"Segoe UI", sans-serif; font-size:0.95rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      opacity:0; pointer-events:none; transition: opacity 300ms ease-in-out;
+      z-index:50;
+    }
+    .toast.show{ opacity:1; pointer-events:auto; }
+
+    /* arena container */
+    .arena{
+      width:100%; height:100%; position:absolute; left:50%; top:50%; transform-style: preserve-3d;
+      transform: translateZ(0px) rotateX(18deg) rotateY(0deg) translateX(-50%) translateY(-50%);
+      transition: transform 220ms ease-out;
+      cursor:grab;
+    }
+    .arena:active{ cursor:grabbing; }
+
+    /* pitch */
+    .pitch{
+      position:absolute; left:50%; top:50%; transform:translateX(-50%) translateY(-50%) translateZ(20px);
+      width:880px; height:580px; background:
+        radial-gradient(circle at center, rgba(2,6,23,0.9) 0%, rgba(2,6,23,0.95) 60%, rgba(2,6,23,1) 100%),
+        linear-gradient(180deg, rgba(2,6,23,1) 0%, rgba(2,6,23,0.9) 100%);
+      border-radius:12px;
+      box-shadow: inset 0 4px 20px rgba(255,255,255, -->
