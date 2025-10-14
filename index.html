@@ -879,11 +879,11 @@
     <!-- QR code image (centered, big) -->
     <img
       id="regQR"
-      src="assets/robosoccer-qr.png"
+      src="./assets/qrcode_forms.gle.png"
       alt="Registration QR"
       style="display:block; margin:0 auto 14px auto; width:220px; height:220px; background:#fff; padding:12px; border-radius:12px; box-shadow:0 10px 30px rgba(2,6,23,0.12); image-rendering:pixelated;"
     />
-    <p class="muted" id="regLinkShown" style="font-size:1rem; text-align:center; margin-bottom:12px; word-break:break-all;"></p>
+    <p class="muted" id="regLinkShown" style="font-size:1rem; text-align:center; margin-bottom:12px; word-break:break-all; display:none;"></p>
     <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-bottom:16px;">
       <button class="btn" id="openQRBtn" style="font-size:1.09rem; padding:12px 26px;">Open QR</button>
       <button class="btn secondary" id="copyLinkBtn" style="font-size:1.09rem; padding:12px 26px;">Copy Link</button>
@@ -924,116 +924,78 @@
       </div>
     </section> -->
       <!-- ORGANIZING COMMITTEE -->
-      <div
-        style="
-          flex: 2;
-          min-width: 480px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        "
-      >
-         
+      <div style="
+                      flex: 2;
+                      min-width: 480px;
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                    ">
         <h3 style="margin: 0 0 14px 0; font-size: 1.5rem; text-align: center">
           Organizing Committee
         </h3>
-         
-        <table
-          style="
-            border-collapse: collapse;
-            font-size: 1.08rem;
-            color: var(--text);
-            background: transparent;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 18px rgba(2, 6, 23, 0.09);
-            text-align: center;
-          "
-        >
-             
-          <thead>
-                 
-            <tr
-              style="
-                color: var(--accent);
-                border-bottom: 2px solid var(--muted);
-              "
-            >
-                     
-              <th style="padding: 10px 8px; text-align: center">Name</th>
-                     
-              <th style="padding: 10px 8px; text-align: center">Role</th>
-                     
-              <th style="padding: 10px 8px; text-align: center">Phone</th>
-                   
-            </tr>
-               
-          </thead>
-             
-          <tbody>
-                 
-            <tr>
-                     
+        <table style="
+                        border-collapse: collapse;
+                        font-size: 1.08rem;
+                        color: var(--text);
+                        background: transparent;
+                        margin-bottom: 10px;
+                        box-shadow: 0 4px 18px rgba(2, 6, 23, 0.09);
+                        text-align: center;
+                      ">
+          <thead>    
+            <tr style="
+                            color: var(--accent);
+                            border-bottom: 2px solid var(--muted);
+                          ">        
+              <th style="padding: 10px 8px; text-align: center">Name</th>        
+              <th style="padding: 10px 8px; text-align: center">Role</th>        
+              <th style="padding: 10px 8px; text-align: center">Phone</th>      
+            </tr>    
+          </thead>    
+          <tbody>      
+            <tr>        
               <td style="padding: 10px 8px; text-align: center">
                 Arpit Srivastav
-              </td>
-                     
-              <td style="padding: 10px 8px; text-align: center">Event Head</td>
-                     
+              </td>        
+              <td style="padding: 10px 8px; text-align: center">Event Head</td>        
               <td style="padding: 10px 8px; text-align: center">
                 +91-9696579460
-              </td>
-                   
-            </tr>
-                 
-            <tr>
-                     
+              </td>      
+            </tr>      
+            <tr>        
               <td style="padding: 10px 8px; text-align: center">
                 Aman Choudhary
-              </td>
-                     
+              </td> 
               <td style="padding: 10px 8px; text-align: center">
-                Logistics & Venue
-              </td>
-                     
+                Event Head
+              </td>  
               <td style="padding: 10px 8px; text-align: center">
                 +91-7987347287
-              </td>
-                   
-            </tr>
-                 
-            <tr>
-                     
+              </td>  
+            </tr> 
+            <tr>    
               <td style="padding: 10px 8px; text-align: center">
                 Pranjal Chaturvedi
-              </td>
-                     
+              </td>  
               <td style="padding: 10px 8px; text-align: center">
-                Media & Registrations
-              </td>
-                     
+                Event Coordinator
+              </td>     
               <td style="padding: 10px 8px; text-align: center">
                 +91-7878330376
-              </td>
-                   
-            </tr>
-                 
-            <tr>
-                     
-              <td style="padding: 10px 8px; text-align: center">NO NAME</td>
-                     
+              </td>      
+            </tr>      
+            <tr>        
+              <td style="padding: 10px 8px; text-align: center">Shashank Savarkar</td>        
               <td style="padding: 10px 8px; text-align: center">
-                Technical Coordinator
-              </td>
-                     
+                Event Coordinator
+              </td>        
               <td style="padding: 10px 8px; text-align: center">
-                +91-99887-65432
-              </td>
-                   
-            </tr>
-               
+                +91-7410075050
+              </td>      
+            </tr> 
           </tbody>
-           
         </table>
       </div>
 
@@ -1059,7 +1021,7 @@
     </section> -->
 
       <footer style="padding: 20px 0; color: var(--muted); text-align: center">
-        © RoboSoccer 2025 — Built with ♥
+        © RoboSoccer 2025 — Built with ♥ by TechnoCrats GSV
       </footer>
     </main>
 
@@ -1430,7 +1392,7 @@ function createArenaOnlySimulation() {
 // ========== End of Button & Simulation JS ==========
 // === Register (QR) section button actions ===
 // Set your real registration link here if available
-const registrationLink = ""; // <-- e.g. "https://your-form.com" or leave blank
+const registrationLink = "https://forms.gle/TdvQ14AE4ku9qs3d8"; // <-- e.g. "https://your-form.com" or leave blank
 
 // Helper: quick toast/notification
 function toast(msg){
@@ -1469,10 +1431,13 @@ if (linkShown) {
 }
 
 // "Open QR" button: open QR image in new tab
-if (openBtn && qrImg) {
-  openBtn.addEventListener("click", () => {
-    window.open(qrImg.src, "_blank");
-  });
+if (openBtn) {
+openBtn.addEventListener("click", () => {
+const url = (typeof registrationLink === "string" && registrationLink.trim())
+? registrationLink.trim()
+: "https://forms.gle/TdvQ14AE4ku9qs3d8";
+window.open(url, "_blank");
+});
 }
 
 // "Copy Link" button: copy registration link (or show error)
