@@ -1,273 +1,951 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RoboSoccer 2025 | Robotics & E.D. Domain | TechnoCrats GSV</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>RoboSoccer 2025 | Robotics & E.D. Domain | TechnoCrats GSV</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@600&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    /* ======= THEME VARIABLES ======= */
-    :root{
-      --bg: #0b1220;
-      --card: rgba(255,255,255,0.03);
-      --muted: #9fb0c6;
-      --accent: #00e0a6;
-      --accent-2: #4ee3ff;
-      --glass: rgba(255,255,255,0.03);
-      --text: #e6eef8;
-      --nav-h: 70px;
-      --radius: 12px;
-      --transition: 260ms cubic-bezier(.2,.9,.2,1);
-      --max-w: 1100px;
-      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    .light{
-      --bg: #f5fbff;
-      --card: rgba(0,0,0,0.04);
-      --muted: #556172;
-      --accent: #0b84ff;
-      --accent-2: #ff7a59;
-      --text: #071227;
-    }
+    <style>
+      /* ======= THEME VARIABLES ======= */
+      :root {
+        --bg: #0b1220;
+        --card: rgba(255, 255, 255, 0.03);
+        --muted: #9fb0c6;
+        --accent: #00e0a6;
+        --accent-2: #4ee3ff;
+        --glass: rgba(255, 255, 255, 0.03);
+        --text: #e6eef8;
+        --nav-h: 70px;
+        --radius: 12px;
+        --transition: 260ms cubic-bezier(0.2, 0.9, 0.2, 1);
+        --max-w: 1100px;
+        font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+      }
+      .light {
+        --bg: #f5fbff;
+        --card: rgba(0, 0, 0, 0.04);
+        --muted: #556172;
+        --accent: #0b84ff;
+        --accent-2: #ff7a59;
+        --text: #071227;
+      }
 
-    /* ======= BASIC LAYOUT ======= */
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0; background:linear-gradient(180deg,var(--bg), color-mix(in srgb,var(--bg) 80%, black 6%)); color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
-    .container{max-width:var(--max-w); margin:0 auto; padding:20px;}
-    header{height:var(--nav-h); display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:40; backdrop-filter: blur(6px); background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); padding:0 18px; box-shadow: 0 10px 30px rgba(2,6,23,0.5);}
-    .brand{display:flex; gap:12px; align-items:center; text-decoration:none; color:inherit; cursor:pointer;}
-    .logo{width:46px;height:46px;border-radius:10px; display:flex; align-items:center; justify-content:center; font-family:Orbitron; background:linear-gradient(150deg,var(--accent),var(--accent-2)); color:#02121a; font-weight:700;}
-    nav{display:flex; gap:12px; align-items:center;}
-    .nav-link{padding:8px 12px; border-radius:10px; text-decoration:none; color:var(--text); font-weight:600; transition:transform 160ms ease;}
-    .nav-link:hover{transform:translateY(-3px)}
-    .controls{display:flex; gap:10px; align-items:center;}
-    .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#02121a; padding:10px 14px; border-radius:10px; border:none; cursor:pointer; font-weight:700; transition:transform 160ms ease;}
-    .btn.secondary{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.06); font-weight:700;}
-    .btn:active{transform:translateY(1px)}
-    .hero{display:grid; grid-template-columns:1fr 520px; gap:28px; align-items:center; padding:34px 0;}
-    .hero-card{background:var(--card); padding:26px; border-radius:var(--radius); box-shadow:0 12px 36px rgba(2,6,23,0.45)}
-    .eyebrow{font-family:Orbitron; color:var(--accent); font-weight:700; letter-spacing:0.6px; font-size:0.85rem}
-    h2{margin:8px 0 12px; font-size:2rem}
-    p.muted{color:var(--muted); margin:0 0 14px 0}
+      /* ======= BASIC LAYOUT ======= */
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: linear-gradient(
+          180deg,
+          var(--bg),
+          color-mix(in srgb, var(--bg) 80%, black 6%)
+        );
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .container {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 20px;
+      }
+      header {
+        height: var(--nav-h);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        backdrop-filter: blur(6px);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.01),
+          transparent
+        );
+        padding: 0 18px;
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.5);
+      }
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+      }
+      .logo {
+        width: 46px;
+        height: 46px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Orbitron;
+        background: linear-gradient(150deg, var(--accent), var(--accent-2));
+        color: #02121a;
+        font-weight: 700;
+      }
+      nav {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .nav-link {
+        padding: 8px 12px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 600;
+        transition: transform 160ms ease;
+      }
+      .nav-link:hover {
+        transform: translateY(-3px);
+      }
+      .controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .btn {
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #02121a;
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        transition: transform 160ms ease;
+      }
+      .btn.secondary {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        font-weight: 700;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 520px;
+        gap: 28px;
+        align-items: center;
+        padding: 34px 0;
+      }
+      .hero-card {
+        background: var(--card);
+        padding: 26px;
+        border-radius: var(--radius);
+        box-shadow: 0 12px 36px rgba(2, 6, 23, 0.45);
+      }
+      .eyebrow {
+        font-family: Orbitron;
+        color: var(--accent);
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        font-size: 0.85rem;
+      }
+      h2 {
+        margin: 8px 0 12px;
+        font-size: 2rem;
+      }
+      p.muted {
+        color: var(--muted);
+        margin: 0 0 14px 0;
+      }
 
-    /* Sections */
-    section{padding:32px 0; scroll-margin-top:calc(var(--nav-h) + 8px);}
-    .section-title{display:flex; align-items:center; gap:12px; margin-bottom:16px;}
-    .card{background:var(--card); padding:18px; border-radius:10px; box-shadow:0 10px 30px rgba(2,6,23,0.35)}
+      /* Sections */
+      section {
+        padding: 32px 0;
+        scroll-margin-top: calc(var(--nav-h) + 8px);
+      }
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .card {
+        background: var(--card);
+        padding: 18px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.35);
+      }
 
-    /* Timeline & rules styling */
-    .timeline{display:flex; flex-direction:column; gap:12px}
-    .timeline-item{display:flex; gap:12px; align-items:flex-start; padding:12px; border-radius:8px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
-    .time{font-family:Orbitron; color:var(--accent); min-width:78px}
-    ol{margin:0;padding-left:18px}
+      /* Timeline & rules styling */
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .timeline-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 12px;
+        border-radius: 8px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.01),
+          transparent
+        );
+      }
+      .time {
+        font-family: Orbitron;
+        color: var(--accent);
+        min-width: 78px;
+      }
+      ol {
+        margin: 0;
+        padding-left: 18px;
+      }
 
-    /* Arena small preview & large placeholder */
-    #arenaPreview{height:420px; border-radius:12px; overflow:hidden; position:relative; background:linear-gradient(180deg,#09321d,#06271b); box-shadow:0 12px 30px rgba(2,6,23,0.5)}
-    .preview-overlay{position:absolute; inset:12px; pointer-events:none}
-    .arena-actions{position:absolute; right:12px; bottom:12px; display:flex; gap:8px; z-index:6}
+      /* Arena small preview & large placeholder */
+      #arenaPreview {
+        height: 420px;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        background: linear-gradient(180deg, #09321d, #06271b);
+        box-shadow: 0 12px 30px rgba(2, 6, 23, 0.5);
+      }
+      .preview-overlay {
+        position: absolute;
+        inset: 12px;
+        pointer-events: none;
+      }
+      .arena-actions {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        display: flex;
+        gap: 8px;
+        z-index: 6;
+      }
 
-    /* Fullscreen simulation overlay (hidden until start) */
-    .sim-fullscreen {
-      position:fixed; inset:0; z-index:2000; display:none; align-items:center; justify-content:center; background:linear-gradient(180deg, rgba(0,0,0,0.85), rgba(2,6,23,0.65));
-      transition: opacity var(--transition);
-    }
-    .sim-fullscreen.show{ display:flex; }
+      /* Fullscreen simulation overlay (hidden until start) */
+      .sim-fullscreen {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.85),
+          rgba(2, 6, 23, 0.65)
+        );
+        transition: opacity var(--transition);
+      }
+      .sim-fullscreen.show {
+        display: flex;
+      }
 
-    .sim-modal{ width:920px; max-width:94vw; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:28px; border-radius:14px; box-shadow:0 30px 80px rgba(0,0,0,0.6); transform:translateY(10px); }
-    .sim-title{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px}
-    .sim-buttons{ display:flex; gap:12px; justify-content:center; margin:18px 0; flex-wrap:wrap; }
-    .sim-option{ min-width:220px; padding:14px 18px; border-radius:10px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#02121a; font-weight:800; cursor:pointer; text-align:center; box-shadow:0 12px 36px rgba(0,0,0,0.45); transition: transform 160ms ease; }
-    .sim-option.secondary{ background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.06); box-shadow:none; font-weight:700 }
-    .sim-option:hover{ transform:translateY(-6px) }
+      .sim-modal {
+        width: 920px;
+        max-width: 94vw;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          transparent
+        );
+        padding: 28px;
+        border-radius: 14px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        transform: translateY(10px);
+      }
+      .sim-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .sim-buttons {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin: 18px 0;
+        flex-wrap: wrap;
+      }
+      .sim-option {
+        min-width: 220px;
+        padding: 14px 18px;
+        border-radius: 10px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #02121a;
+        font-weight: 800;
+        cursor: pointer;
+        text-align: center;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+        transition: transform 160ms ease;
+      }
+      .sim-option.secondary {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: none;
+        font-weight: 700;
+      }
+      .sim-option:hover {
+        transform: translateY(-6px);
+      }
 
-    /* Fullscreen simulation canvas area (replaces site content visually) */
-    .sim-stage{ position:fixed; inset:0; background:linear-gradient(180deg,#09321d,#071b14); display:none; z-index:2050; overflow:hidden; align-items:stretch; justify-content:center; }
-    .sim-stage.show{ display:flex; }
-    .sim-topbar{ position:absolute; top:12px; left:12px; right:12px; display:flex; justify-content:space-between; align-items:center; gap:12px; z-index:60; }
-    .sim-controls{ display:flex; gap:8px; align-items:center; }
-    .sim-exit{ background:rgba(0,0,0,0.4); color:var(--text); padding:8px 12px; border-radius:10px; cursor:pointer; }
+      /* Fullscreen simulation canvas area (replaces site content visually) */
+      .sim-stage {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(180deg, #09321d, #071b14);
+        display: none;
+        z-index: 2050;
+        overflow: hidden;
+        align-items: stretch;
+        justify-content: center;
+      }
+      .sim-stage.show {
+        display: flex;
+      }
+      .sim-topbar {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        z-index: 60;
+      }
+      .sim-controls {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .sim-exit {
+        background: rgba(0, 0, 0, 0.4);
+        color: var(--text);
+        padding: 8px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
 
-    /* Sim content layout */
-    .sim-content{ flex:1; display:flex; align-items:center; justify-content:center; padding:80px 20px; gap:20px; }
-    .sim-canvas{ width:min(1200px,96vw); height:min(720px,80vh); background:linear-gradient(180deg,#0b3a25,#06311b); border-radius:14px; position:relative; display:flex; align-items:center; justify-content:center; box-shadow:0 30px 80px rgba(0,0,0,0.6) }
+      /* Sim content layout */
+      .sim-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 20px;
+        gap: 20px;
+      }
+      .sim-canvas {
+        width: min(1200px, 96vw);
+        height: min(720px, 80vh);
+        background: linear-gradient(180deg, #0b3a25, #06311b);
+        border-radius: 14px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+      }
 
-    /* FIELD (pitch) = realistic tones with nod to futuristic */
-    .field {
-      width:96%; height:92%; max-width:1080px; max-height:640px; border-radius:8px; position:relative; overflow:hidden;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.07), rgba(0,0,0,0.02)),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 6px, rgba(0,0,0,0.02) 6px 12px),
-        linear-gradient(180deg,#0b6b3f,#085a34); box-shadow: inset 0 6px 18px rgba(0,0,0,0.6);
-      border:6px solid rgba(255,255,255,0.04); transform-style:preserve-3d;
-    }
+      /* FIELD (pitch) = realistic tones with nod to futuristic */
+      .field {
+        width: 96%;
+        height: 92%;
+        max-width: 1080px;
+        max-height: 640px;
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.07),
+            rgba(0, 0, 0, 0.02)
+          ),
+          repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.02) 0 6px,
+            rgba(0, 0, 0, 0.02) 6px 12px
+          ),
+          linear-gradient(180deg, #0b6b3f, #085a34);
+        box-shadow: inset 0 6px 18px rgba(0, 0, 0, 0.6);
+        border: 6px solid rgba(255, 255, 255, 0.04);
+        transform-style: preserve-3d;
+      }
 
-    /* Lines */
-    .line { position:absolute; background:white; opacity:0.95; }
-    .center-line { left:50%; top:0; bottom:0; width:4px; transform:translateX(-50%); }
-    .center-circle { position:absolute; left:50%; top:50%; width:160px; height:160px; border-radius:50%; transform:translate(-50%,-50%); border:4px solid rgba(255,255,255,0.95); }
-    .penalty-box-left, .penalty-box-right { position:absolute; top:20%; width:18%; height:60%; border:4px solid rgba(255,255,255,0.9); }
-    .penalty-box-left{ left:2.5%; }
-    .penalty-box-right{ right:2.5%; }
-    .goal-left, .goal-right{ position:absolute; width:6%; height:12%; top:44%; border:4px solid rgba(255,255,255,0.9); background:transparent; }
-    .goal-left{ left:-3%; border-left:none; border-radius:4px; }
-    .goal-right{ right:-3%; border-right:none; border-radius:4px; }
+      /* Lines */
+      .line {
+        position: absolute;
+        background: white;
+        opacity: 0.95;
+      }
+      .center-line {
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        transform: translateX(-50%);
+      }
+      .center-circle {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        border: 4px solid rgba(255, 255, 255, 0.95);
+      }
+      .penalty-box-left,
+      .penalty-box-right {
+        position: absolute;
+        top: 20%;
+        width: 18%;
+        height: 60%;
+        border: 4px solid rgba(255, 255, 255, 0.9);
+      }
+      .penalty-box-left {
+        left: 2.5%;
+      }
+      .penalty-box-right {
+        right: 2.5%;
+      }
+      .goal-left,
+      .goal-right {
+        position: absolute;
+        width: 6%;
+        height: 12%;
+        top: 44%;
+        border: 4px solid rgba(255, 255, 255, 0.9);
+        background: transparent;
+      }
+      .goal-left {
+        left: -3%;
+        border-left: none;
+        border-radius: 4px;
+      }
+      .goal-right {
+        right: -3%;
+        border-right: none;
+        border-radius: 4px;
+      }
 
-    /* Ball (CSS sphere) */
-    .ball {
-      width:46px; height:46px; border-radius:50%; background: radial-gradient(circle at 20% 25%, #ffffff 10%, #f0f0f0 28%, #cfcfcf 60%), repeating-conic-gradient(#0b0b0b 0 15deg, transparent 15deg 30deg);
-      position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); box-shadow: 0 8px 26px rgba(0,0,0,0.6), inset 0 -6px 12px rgba(0,0,0,0.15);
-      animation: ball-breathe 3.2s ease-in-out infinite;
-    }
-    @keyframes ball-breathe { 0% { transform:translate(-50%,-50%) scale(0.995);} 50% { transform:translate(-50%,-50%) scale(1.02);} 100% { transform:translate(-50%,-50%) scale(0.995);} }
+      /* Ball (CSS sphere) */
+      .ball {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: radial-gradient(
+            circle at 20% 25%,
+            #ffffff 10%,
+            #f0f0f0 28%,
+            #cfcfcf 60%
+          ),
+          repeating-conic-gradient(#0b0b0b 0 15deg, transparent 15deg 30deg);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.6),
+          inset 0 -6px 12px rgba(0, 0, 0, 0.15);
+        animation: ball-breathe 3.2s ease-in-out infinite;
+      }
+      @keyframes ball-breathe {
+        0% {
+          transform: translate(-50%, -50%) scale(0.995);
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.02);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(0.995);
+        }
+      }
 
-    /* Demo Car (CSS 3D) */
-    .car-wrapper { position:absolute; left:30%; top:60%; width:150px; height:80px; perspective:900px; transform-style:preserve-3d; z-index:30; }
-    .car {
-      width:140px; height:70px; position:relative; transform-style:preserve-3d; transform-origin:center center; transition: transform 400ms ease;
-      animation: car-roam 6s linear infinite;
-    }
-    .car .body { position:absolute; left:0; top:6px; width:100%; height:48px; border-radius:10px; background:linear-gradient(180deg,#c8ffdb,#8ef0b8); box-shadow:0 8px 26px rgba(0,0,0,0.45); transform: translateZ(12px) rotateX(6deg); }
-    .car .cockpit { position:absolute; right:12px; top:-6px; width:42px; height:34px; border-radius:6px; background:linear-gradient(180deg,#07323b,#07505a); transform: translateZ(18px); }
-    .car .wheel { position:absolute; width:22px; height:22px; border-radius:50%; background:#111; top:46px; box-shadow: inset 0 -4px 8px rgba(255,255,255,0.02); transform: translateZ(8px); }
-    .car .wheel.left { left:10px; }
-    .car .wheel.right { right:10px; }
-    .car .spoiler { position:absolute; left:10px; top:-8px; width:36px; height:8px; background:linear-gradient(90deg,#2a2a2a,#0b0b0b); transform: translateZ(20px); border-radius:4px; }
+      /* Demo Car (CSS 3D) */
+      .car-wrapper {
+        position: absolute;
+        left: 30%;
+        top: 60%;
+        width: 150px;
+        height: 80px;
+        perspective: 900px;
+        transform-style: preserve-3d;
+        z-index: 30;
+      }
+      .car {
+        width: 140px;
+        height: 70px;
+        position: relative;
+        transform-style: preserve-3d;
+        transform-origin: center center;
+        transition: transform 400ms ease;
+        animation: car-roam 6s linear infinite;
+      }
+      .car .body {
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 100%;
+        height: 48px;
+        border-radius: 10px;
+        background: linear-gradient(180deg, #c8ffdb, #8ef0b8);
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+        transform: translateZ(12px) rotateX(6deg);
+      }
+      .car .cockpit {
+        position: absolute;
+        right: 12px;
+        top: -6px;
+        width: 42px;
+        height: 34px;
+        border-radius: 6px;
+        background: linear-gradient(180deg, #07323b, #07505a);
+        transform: translateZ(18px);
+      }
+      .car .wheel {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #111;
+        top: 46px;
+        box-shadow: inset 0 -4px 8px rgba(255, 255, 255, 0.02);
+        transform: translateZ(8px);
+      }
+      .car .wheel.left {
+        left: 10px;
+      }
+      .car .wheel.right {
+        right: 10px;
+      }
+      .car .spoiler {
+        position: absolute;
+        left: 10px;
+        top: -8px;
+        width: 36px;
+        height: 8px;
+        background: linear-gradient(90deg, #2a2a2a, #0b0b0b);
+        transform: translateZ(20px);
+        border-radius: 4px;
+      }
 
-    @keyframes car-roam {
-      0% { transform: translate3d(0,0,0) rotateY(-6deg) translateZ(0); }
-      25% { transform: translate3d(180px,-18px,0) rotateY(6deg) translateZ(0); }
-      50% { transform: translate3d(360px,0,0) rotateY(-8deg) translateZ(0); }
-      75% { transform: translate3d(180px,14px,0) rotateY(6deg) translateZ(0); }
-      100% { transform: translate3d(0,0,0) rotateY(0deg) translateZ(0); }
-    }
+      @keyframes car-roam {
+        0% {
+          transform: translate3d(0, 0, 0) rotateY(-6deg) translateZ(0);
+        }
+        25% {
+          transform: translate3d(180px, -18px, 0) rotateY(6deg) translateZ(0);
+        }
+        50% {
+          transform: translate3d(360px, 0, 0) rotateY(-8deg) translateZ(0);
+        }
+        75% {
+          transform: translate3d(180px, 14px, 0) rotateY(6deg) translateZ(0);
+        }
+        100% {
+          transform: translate3d(0, 0, 0) rotateY(0deg) translateZ(0);
+        }
+      }
 
-    /* Labels & overlays */
-    .label { position:absolute; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#02121a; padding:6px 10px; border-radius:8px; font-weight:800; font-size:0.82rem; transform:translateZ(30px); box-shadow:0 8px 18px rgba(0,0,0,0.45); }
-    .label.dim { background:transparent; color:var(--text); border-radius:6px; padding:6px 8px; border:1px solid rgba(255,255,255,0.06); font-weight:700; }
+      /* Labels & overlays */
+      .label {
+        position: absolute;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #02121a;
+        padding: 6px 10px;
+        border-radius: 8px;
+        font-weight: 800;
+        font-size: 0.82rem;
+        transform: translateZ(30px);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+      }
+      .label.dim {
+        background: transparent;
+        color: var(--text);
+        border-radius: 6px;
+        padding: 6px 8px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        font-weight: 700;
+      }
 
-    /* Goalpost labels */
-    .label.pitch { left:6%; top:6%; }
-    .label.goal-left { left:0%; top:46%; transform:translate(-10px,-50%); }
-    .label.goal-right { right:0%; top:46%; transform:translate(10px,-50%); }
-    .label.ball { left:50%; top:50%; transform:translate(-50%,-190%); }
+      /* Goalpost labels */
+      .label.pitch {
+        left: 6%;
+        top: 6%;
+      }
+      .label.goal-left {
+        left: 0%;
+        top: 46%;
+        transform: translate(-10px, -50%);
+      }
+      .label.goal-right {
+        right: 0%;
+        top: 46%;
+        transform: translate(10px, -50%);
+      }
+      .label.ball {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -190%);
+      }
 
-    /* Exit + mode indicator */
-    .mode-indicator { position:absolute; left:12px; bottom:12px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#02121a; padding:8px 12px; border-radius:10px; font-weight:800; box-shadow:0 12px 34px rgba(0,0,0,0.5); }
+      /* Exit + mode indicator */
+      .mode-indicator {
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #02121a;
+        padding: 8px 12px;
+        border-radius: 10px;
+        font-weight: 800;
+        box-shadow: 0 12px 34px rgba(0, 0, 0, 0.5);
+      }
 
-    /* Responsive */
-    @media (max-width:980px){
-      .hero{ grid-template-columns: 1fr; }
-      .sim-modal{ width:94vw; padding:18px; }
-      .sim-canvas{ height:60vh }
-    }
-  </style>
-</head>
-<body>
-  <!-- HEADER -->
-  <header>
-    <div class="container" style="display:flex; align-items:center; justify-content:space-between; padding:0;">
-      <a class="brand" id="homeBtn"><div class="logo">RS</div><div><div style="font-weight:800">RoboSoccer 2025</div><div style="font-size:0.8rem;color:var(--muted)">Intercollegiate Robotics Tournament</div></div></a>
+      /* Responsive */
+      @media (max-width: 980px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .sim-modal {
+          width: 94vw;
+          padding: 18px;
+        }
+        .sim-canvas {
+          height: 60vh;
+        }
+      }
+    </style>
+  </head>
+  <!-------------------------------------------MAIN BODY------------------------------------------------------------------------->
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div
+        class="container"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0;
+        "
+      >
+        <a class="brand" id="homeBtn"
+          ><div class="logo">RS</div>
+          <div>
+            <div style="font-weight: 800">RoboSoccer 2025</div>
+            <div style="font-size: 0.8rem; color: var(--muted)">
+              Intercollegiate Robotics Tournament
+            </div>
+          </div></a
+        >
 
-      <nav>
-        <a class="nav-link" href="#home">Home</a>
-        <a class="nav-link" href="#schedule">Schedule</a>
-        <a class="nav-link" href="#rules">General Rules</a>
-        <a class="nav-link" href="#arena">3D Arena</a>
-        <a class="nav-link" href="#register">Register</a>
-        <a class="nav-link" href="#contact">Contact</a>
-      </nav>
+        <nav>
+          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" href="#schedule">Schedule</a>
+          <a class="nav-link" href="#rules">General Rules</a>
+          <a class="nav-link" href="#arena">3D Arena</a>
+          <a class="nav-link" href="#register">Register</a>
+          <a class="nav-link" href="#contact">Contact</a>
+        </nav>
 
-      <div class="controls">
-        <button id="themeToggle" class="btn secondary">
-  <span id="themeIcon">
-    <!-- Default: Sun icon for light mode -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-      <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
-      <path d="M8 0a.5.5 0 0 1 .5.5V2a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 8 0zm0 14a.5.5 0 0 1 .5.5V16a.5.5 0 0 1-1 0v-1.5a.5.5 0 0 1 .5-.5zM16 8a.5.5 0 0 1-.5.5H14a.5.5 0 0 1 0-1h1.5a.5.5 0 0 1 .5.5zM2 8a.5.5 0 0 1-.5.5H0a.5.5 0 0 1 0-1h1.5A.5.5 0 0 1 2 8zm11.657-4.657a.5.5 0 0 1 .707 0l1.06 1.06a.5.5 0 1 1-.708.708l-1.06-1.06a.5.5 0 0 1 0-.708zm-9.9 9.9a.5.5 0 0 1 .707 0l1.06 1.06a.5.5 0 0 1-.707.707l-1.06-1.06a.5.5 0 0 1 0-.707zm9.9 0a.5.5 0 0 1 0 .707l-1.06 1.06a.5.5 0 1 1-.707-.707l1.06-1.06a.5.5 0 0 1 .707 0zm-9.9-9.9a.5.5 0 0 1 0 .707L2.697 5.828a.5.5 0 0 1-.707-.707l1.06-1.06a.5.5 0 0 1 .707 0z"/>
-    </svg>
-  </span>
-</button>
+        <div class="controls">
+          <button id="themeToggle" class="btn secondary">
+            <span id="themeIcon">
+              <!-- Default: Sun icon for light mode -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+                <path
+                  d="M8 0a.5.5 0 0 1 .5.5V2a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 8 0zm0 14a.5.5 0 0 1 .5.5V16a.5.5 0 0 1-1 0v-1.5a.5.5 0 0 1 .5-.5zM16 8a.5.5 0 0 1-.5.5H14a.5.5 0 0 1 0-1h1.5a.5.5 0 0 1 .5.5zM2 8a.5.5 0 0 1-.5.5H0a.5.5 0 0 1 0-1h1.5A.5.5 0 0 1 2 8zm11.657-4.657a.5.5 0 0 1 .707 0l1.06 1.06a.5.5 0 1 1-.708.708l-1.06-1.06a.5.5 0 0 1 0-.708zm-9.9 9.9a.5.5 0 0 1 .707 0l1.06 1.06a.5.5 0 0 1-.707.707l-1.06-1.06a.5.5 0 0 1 0-.707zm9.9 0a.5.5 0 0 1 0 .707l-1.06 1.06a.5.5 0 1 1-.707-.707l1.06-1.06a.5.5 0 0 1 .707 0zm-9.9-9.9a.5.5 0 0 1 0 .707L2.697 5.828a.5.5 0 0 1-.707-.707l1.06-1.06a.5.5 0 0 1 .707 0z"
+                />
+              </svg>
+            </span>
+          </button>
 
-        <button id="startSimBtn" class="btn">Start Simulation</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- MAIN PAGE -->
-  <main class="container">
-    <section id="home" class="hero">
-      <div class="hero-card">
-        <div class="eyebrow">ROBO SOCCER — BATTLE FOR THE CUP</div>
-        <h2>RoboSoccer 2025 — Where bots play, teams win</h2>
-        <p class="muted">Join the electrifying robotics tournament. Build autonomous robots, solve navigation challenges, and play in front of industry judges.</p>
-        <div style="display:flex; gap:10px; margin-top:12px;">
-          <button class="btn" id="viewScheduleBtn">View Schedule</button>
-          <button class="btn secondary" id="viewRulesBtn">View Rules</button>
-          <button class="btn" id="quickStartBtn">Start Simulation</button>
+          <button id="startSimBtn" class="btn">Start Simulation</button>
         </div>
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-          <div style="background:var(--card); padding:8px 12px; border-radius:8px;">📍 Venue to be announced!</div>
-          <div style="background:var(--card); padding:8px 12px; border-radius:8px;">🗓 Nov 13, 2025</div>
-          <div style="background:var(--card); padding:8px 12px; border-radius:8px;">🏆 Exciting Cash Prizes!</div>
+      </div>
+    </header>
+
+    <!-- MAIN PAGE -->
+    <main class="container">
+      <section id="home" class="hero">
+        <div class="hero-card">
+          <div class="eyebrow">ROBO SOCCER — BATTLE FOR THE CUP</div>
+          <h2>RoboSoccer 2025 — Where bots play, teams win</h2>
+          <p class="muted">
+            Join the electrifying robotics tournament. Build autonomous robots,
+            solve navigation challenges, and play in front of industry judges.
+          </p>
+          <div style="display: flex; gap: 10px; margin-top: 12px">
+            <button class="btn" id="viewScheduleBtn">View Schedule</button>
+            <button class="btn secondary" id="viewRulesBtn">View Rules</button>
+            <button class="btn" id="quickStartBtn">Start Simulation</button>
+          </div>
+          <div
+            style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap"
+          >
+            <div
+              style="
+                background: var(--card);
+                padding: 8px 12px;
+                border-radius: 8px;
+              "
+            >
+              📍 Venue to be announced!
+            </div>
+            <div
+              style="
+                background: var(--card);
+                padding: 8px 12px;
+                border-radius: 8px;
+              "
+            >
+              🗓 Nov 13, 2025
+            </div>
+            <div
+              style="
+                background: var(--card);
+                padding: 8px 12px;
+                border-radius: 8px;
+              "
+            >
+              🏆 Exciting Cash Prizes!
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div id="arenaPreview" class="card">
-        <div style="position:absolute; left:12px; top:12px; z-index:4;" class="label pitch">Arena Preview</div>
-        <!-- small aesthetic field -->
-        <div style="position:absolute; inset:12px; border-radius:8px; background: repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 6px, rgba(0,0,0,0.02) 6px 12px), linear-gradient(180deg,#0b6b3f,#085a34);"></div>
+        <div id="arenaPreview" class="card">
+          <div
+            style="position: absolute; left: 12px; top: 12px; z-index: 4"
+            class="label pitch"
+          >
+            Arena Preview
+          </div>
+          <!-- small aesthetic field -->
+          <div
+            style="
+              position: absolute;
+              inset: 12px;
+              border-radius: 8px;
+              background: repeating-linear-gradient(
+                  90deg,
+                  rgba(255, 255, 255, 0.03) 0 6px,
+                  rgba(0, 0, 0, 0.02) 6px 12px
+                ),
+                linear-gradient(180deg, #0b6b3f, #085a34);
+            "
+          ></div>
 
-        <div class="arena-actions">
-          <button class="btn secondary" id="previewStartBtn">Start</button>
+          <div class="arena-actions">
+            <button class="btn secondary" id="previewStartBtn">Start</button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- SCHEDULE -->
-    <section id="schedule">
-      <div class="section-title"><h3>Schedule</h3></div>
-      <div class="timeline card">
-        <div class="timeline-item"><div class="time">14/10/2025</div><div><strong>Team Registration Starts</strong><div class="muted"></div></div></div>
-        <div class="timeline-item"><div class="time">01/11/2025</div><div><strong>Query and QnA Session</strong><div class="muted">Answering all issues and doubts.</div></div></div>
-        <div class="timeline-item"><div class="time">08/11/2025</div><div><strong>Team Registration Ends</strong><div class="muted">Time till 07/11/2025 23:59 hrs</div></div></div>
-        <div class="timeline-item"><div class="time">13/11/2025</div><div><strong>Round I - Bot Presentation & Briefing</strong><div class="muted">Team check-in, components inspection & rules briefing session.</div></div></div>
-        <div class="timeline-item"><div class="time">15/11/2025</div><div><strong>Round II - Final Round</strong><div class="muted">Championship match !</div></div></div>
-        <div class="timeline-item"><div class="time">16/11/2025</div><div><strong>Next Announcement from OC on Official Platform!</strong><div class="muted"></div></div></div>
-      </div>
-    </section>
-
-    <!-- RULES -->
-    <section id="rules">
-      <div class="section-title"><h3>General Rules</h3></div>
-      <div class="card">
-        <ol>
-          <li><strong>Team:</strong> 2 to 4 students.</li>
-          <li><strong>Robot dimensions:</strong> (l × b × h)  ≤ (35cm × 25cm × 15cm), ≤ 2kg weight.</li>
-          <li><strong>Autonomy:</strong> Bots must be manually controlled (wired or wireless)...(More about this in Official Rulebook)</li>
-          <li><strong>Batteries:</strong>  Power supply must be onboard and ≤ 24V DC. Teams must provide inspection sheet.</li>
-          <li><strong>Match format:</strong>  Knockout tournament; one-on-one matches</li>
-          <li><strong>Scoring:</strong> Goal = 50 point. Own goals count for opponent. Referee decisions final.</li>
-          <li><strong>Safety:</strong> Every bot must have a protected sheet to ensure safety of itself as well as the opponents bot</li>
-          <li><strong>Penalties:</strong> Unsportsmanlike conduct or sabotage leads to penalties or disqualification.</li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ARENA SECTION -->
-    <section id="arena">
-      <div class="section-title"><h3>3D Arena</h3></div>
-      <div class="card">
-        <p class="muted">This page contains an interactive simulation demo. Click <strong>Start Simulation</strong> to open fullscreen simulation modes.</p>
-        <div style="display:flex; gap:12px; margin-top:12px;">
-          <button class="btn" id="arenaStartLarge">Start Simulation</button>
-          <button class="btn secondary" id="arenaInspect">Inspect Arena</button>
+      <!-- SCHEDULE -->
+      <section id="schedule">
+<h3 style="margin:0 0 14px 0; font-size:1.5rem;">Schedule</h3>
+        <div class="timeline card">
+          <div class="timeline-item">
+            <div class="time">14/10/2025</div>
+            <div>
+              <strong>Team Registration Starts</strong>
+              <div class="muted"></div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">01/11/2025</div>
+            <div>
+              <strong>Query and QnA Session</strong>
+              <div class="muted">Answering all issues and doubts.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">08/11/2025</div>
+            <div>
+              <strong>Team Registration Ends</strong>
+              <div class="muted">Time till 07/11/2025 23:59 hrs</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">13/11/2025</div>
+            <div>
+              <strong>Round I - Bot Presentation & Briefing</strong>
+              <div class="muted">
+                Team check-in, components inspection & rules briefing session.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">15/11/2025</div>
+            <div>
+              <strong>Round II - Final Round</strong>
+              <div class="muted">Championship match !</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">16/11/2025</div>
+            <div>
+              <strong>Next Announcement from OC on Official Platform!</strong>
+              <div class="muted"></div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- REGISTER -->
+      <!-- RULES -->
+      <section id="rules">
+        <h3 style="margin:0 0 14px 0; font-size:1.5rem;">General Rules</h3>
+        <div class="card">
+          <ol>
+            <li><strong>Team:</strong> 2 to 4 students.</li>
+            <li>
+              <strong>Robot dimensions:</strong> (l × b × h) ≤ (35cm × 25cm ×
+              15cm), ≤ 2kg weight.
+            </li>
+            <li>
+              <strong>Autonomy:</strong> Bots must be manually controlled (wired
+              or wireless)...(More about this in Official Rulebook)
+            </li>
+            <li>
+              <strong>Batteries:</strong> Power supply must be onboard and ≤ 24V
+              DC. Teams must provide inspection sheet.
+            </li>
+            <li>
+              <strong>Match format:</strong> Knockout tournament; one-on-one
+              matches
+            </li>
+            <li>
+              <strong>Scoring:</strong> Goal = 50 point. Own goals count for
+              opponent. Referee decisions final.
+            </li>
+            <li>
+              <strong>Safety:</strong> Every bot must have a protected sheet to
+              ensure safety of itself as well as the opponents bot
+            </li>
+            <li>
+              <strong>Penalties:</strong> Unsportsmanlike conduct or sabotage
+              leads to penalties or disqualification.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ARENA SECTION -->
+      <section id="arena">
+        <h3 style="margin:0 0 14px 0; font-size:1.5rem;">Arena</h3>
+        <div class="card">
+          <p class="muted">
+            This page contains an interactive simulation demo. Click
+            <strong>Start Simulation</strong> to open fullscreen simulation
+            modes.
+          </p>
+          <div style="display: flex; gap: 12px; margin-top: 12px">
+            <button class="btn" id="arenaStartLarge">Start Simulation</button>
+            <button class="btn secondary" id="arenaInspect">
+              Inspect Arena
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- REGISTER (QR-based) -->
+      <section id="register">
+        <h3 style="margin:0 0 14px 0; font-size:1.5rem;">Register</h3>
+        <div
+          class="card"
+          style="display: flex; gap: 18px; flex-wrap: wrap; align-items: center"
+        >
+          <div style="flex: 1; min-width: 280px">
+            <p class="muted" style="margin: 0 0 10px">
+              Scan the QR to register your team.
+            </p>
+
+            <!-- QR code image placeholder (replace src with your QR image file path) -->
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                flex-wrap: wrap;
+              "
+            >
+              <img
+                id="regQR"
+                src="assets/robosoccer-qr.png"
+                alt="Registration QR"
+                style="
+                  width: 220px;
+                  height: 220px;
+                  background: #fff;
+                  padding: 10px;
+                  border-radius: 10px;
+                  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.35);
+                  image-rendering: pixelated;
+                "
+              />
+              <div style="flex: 1; min-width: 220px">
+                <p
+                  class="muted"
+                  id="regLinkShown"
+                  style="word-break: break-all"
+                ></p>
+                <div
+                  style="
+                    display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                    margin-top: 8px;
+                  "
+                >
+                  <button class="btn" id="openQRBtn">Open QR</button>
+                  <button class="btn secondary" id="copyLinkBtn">
+                    Copy Link
+                  </button>
+                  <button class="btn secondary" id="downloadRules2">
+                    Download Rules
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="width: 320px">
+            <h4 style="margin-top: 0">Registration</h4>
+            <p class="muted" style="margin: 0 0 8px">Opens: 14/10/2025</p>
+            <p class="muted" style="margin: 0 0 8px">
+              Closes: 08/11/2025 23:59 hrs
+            </p>
+            <p class="muted" style="margin: 0 0 8px">Fee: ₹500 / team</p>
+            <p class="muted" style="margin: 0">
+              Contact: events@robosoccer.org
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- REGISTER
     <section id="register">
       <div class="section-title"><h3>Register</h3></div>
       <div class="card" style="display:flex; gap:18px; flex-wrap:wrap;">
@@ -290,9 +968,44 @@
           <p class="muted" style="margin:0 0 8px;">Contact: events@robosoccer.org</p>
         </div>
       </div>
-    </section>
+    </section> -->
+      <!-- ORGANIZING COMMITTEE -->
+      <div style="flex:2; min-width:480px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+  <h3 style="margin:0 0 14px 0; font-size:1.5rem; text-align:center;">Organizing Committee</h3>
+  <table style="border-collapse:collapse; font-size:1.08rem; color:var(--text); background:transparent; margin-bottom:10px; box-shadow:0 4px 18px rgba(2,6,23,0.09); text-align:center;">
+    <thead>
+      <tr style="color:var(--accent); border-bottom:2px solid var(--muted);">
+        <th style="padding:10px 8px; text-align:center;">Name</th>
+        <th style="padding:10px 8px; text-align:center;">Role</th>
+        <th style="padding:10px 8px; text-align:center;">Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:10px 8px; text-align:center;">Arpit Srivastav</td>
+        <td style="padding:10px 8px; text-align:center;">Event Head</td>
+        <td style="padding:10px 8px; text-align:center;">+91-9696579460</td>
+      </tr>
+      <tr>
+        <td style="padding:10px 8px; text-align:center;">Aman Choudhary</td>
+        <td style="padding:10px 8px; text-align:center;">Logistics & Venue</td>
+        <td style="padding:10px 8px; text-align:center;">+91-7987347287</td>
+      </tr>
+      <tr>
+        <td style="padding:10px 8px; text-align:center;">Pranjal Chaturvedi</td>
+        <td style="padding:10px 8px; text-align:center;">Media & Registrations</td>
+        <td style="padding:10px 8px; text-align:center;">+91-7878330376</td>
+      </tr>
+      <tr>
+        <td style="padding:10px 8px; text-align:center;">NO NAME</td>
+        <td style="padding:10px 8px; text-align:center;">Technical Coordinator</td>
+        <td style="padding:10px 8px; text-align:center;">+91-99887-65432</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-    <!-- CONTACT -->
+      <!-- CONTACT
     <section id="contact">
       <div class="section-title"><h3>Contact</h3></div>
       <div class="card" style="display:flex; gap:18px; flex-wrap:wrap;">
@@ -311,317 +1024,524 @@
           <p class="muted">Follow: Instagram · LinkedIn · YouTube</p>
         </div>
       </div>
-    </section>
+    </section> -->
 
-    <footer style="padding:20px 0; color:var(--muted); text-align:center;">© RoboSoccer 2025 — Built with ♥</footer>
-  </main>
+      <footer style="padding: 20px 0; color: var(--muted); text-align: center">
+        © RoboSoccer 2025 — Built with ♥
+      </footer>
+    </main>
 
-  <!-- FULLSCREEN SIMULATION UI -->
-  <div id="simFull" class="sim-fullscreen" aria-hidden="true">
-    <div class="sim-modal" role="dialog" aria-modal="true" aria-labelledby="simTitle">
-      <div class="sim-title"><div style="font-weight:900; font-size:1.15rem;" id="simTitle">Choose Simulation Mode</div>
-        <div style="color:var(--muted)">Press <span style="font-family:Orbitron;background:var(--card);padding:6px 8px;border-radius:8px;">Esc</span> or use Exit to close</div>
-      </div>
+    <!-- FULLSCREEN SIMULATION UI -->
+    <div id="simFull" class="sim-fullscreen" aria-hidden="true">
+      <div
+        class="sim-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="simTitle"
+      >
+        <div class="sim-title">
+          <div style="font-weight: 900; font-size: 1.15rem" id="simTitle">
+            Choose Simulation Mode
+          </div>
+          <div style="color: var(--muted)">
+            Press
+            <span
+              style="
+                font-family: Orbitron;
+                background: var(--card);
+                padding: 6px 8px;
+                border-radius: 8px;
+              "
+              >Esc</span
+            >
+            or use Exit to close
+          </div>
+        </div>
 
-      <div style="display:flex; gap:12px; align-items:center; justify-content:center;">
-        <div class="sim-option" id="demoCarOption">🏎 Demo Car Simulation</div>
-        <div class="sim-option secondary" id="arenaOption">⚽ 3D Arena Simulation</div>
-      </div>
+        <div
+          style="
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <div class="sim-option" id="demoCarOption">🏎 Demo Car Simulation</div>
+          <div class="sim-option secondary" id="arenaOption">
+            ⚽ 3D Arena Simulation
+          </div>
+        </div>
 
-      <div style="margin-top:18px; text-align:center; color:var(--muted);">You can switch modes inside the simulation using the top controls.</div>
+        <div style="margin-top: 18px; text-align: center; color: var(--muted)">
+          You can switch modes inside the simulation using the top controls.
+        </div>
 
-      <div style="display:flex; justify-content:center; margin-top:16px;">
-        <button class="btn secondary" id="simCancel">Cancel</button>
+        <div style="display: flex; justify-content: center; margin-top: 16px">
+          <button class="btn secondary" id="simCancel">Cancel</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- SIMULATION STAGE (full-screen immersive) -->
-  <div id="simStage" class="sim-stage" aria-hidden="true">
-    <div class="sim-topbar">
-      <div style="display:flex; gap:8px; align-items:center;">
-        <div style="font-weight:900; font-size:1rem;">Simulation</div>
-        <div style="color:var(--muted); font-size:0.92rem;">RoboSoccer — Simulation Mode</div>
+    <!-- SIMULATION STAGE (full-screen immersive) -->
+    <div id="simStage" class="sim-stage" aria-hidden="true">
+      <div class="sim-topbar">
+        <div style="display: flex; gap: 8px; align-items: center">
+          <div style="font-weight: 900; font-size: 1rem">Simulation</div>
+          <div style="color: var(--muted); font-size: 0.92rem">
+            RoboSoccer — Simulation Mode
+          </div>
+        </div>
+        <div class="sim-controls">
+          <div id="modeBadge" class="mode-indicator">Mode</div>
+          <button class="sim-exit" id="exitSimBtn">Exit Simulation</button>
+        </div>
       </div>
-      <div class="sim-controls">
-        <div id="modeBadge" class="mode-indicator">Mode</div>
-        <button class="sim-exit" id="exitSimBtn">Exit Simulation</button>
+
+      <div class="sim-content">
+        <div class="sim-canvas" id="simCanvas">
+          <!-- Field / Car / Ball elements inserted dynamically -->
+        </div>
       </div>
     </div>
+<!--------------------------------------------------SCRIPT------------------------------------------------------------------>
+    <script>
+      // ====== Utilities & theme ======
+      const body = document.body;
+      const simFull = document.getElementById("simFull");
+      const simStage = document.getElementById("simStage");
+      const modeBadge = document.getElementById("modeBadge");
 
-    <div class="sim-content">
-      <div class="sim-canvas" id="simCanvas">
-        <!-- Field / Car / Ball elements inserted dynamically -->
-      </div>
-    </div>
-  </div>
+      // Theme restore
+      const saved = localStorage.getItem("rs-theme") || "dark";
+      if (saved === "light") body.classList.add("light");
 
-  <script>
-    // ====== Utilities & theme ======
-    const body = document.body;
-    const simFull = document.getElementById('simFull');
-    const simStage = document.getElementById('simStage');
-    const modeBadge = document.getElementById('modeBadge');
-
-    // Theme restore
-    const saved = localStorage.getItem('rs-theme') || 'dark';
-    if(saved === 'light') body.classList.add('light');
-
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      body.classList.toggle('light');
-      localStorage.setItem('rs-theme', body.classList.contains('light') ? 'light' : 'dark');
-    });
-
-    // Nav anchors smooth scroll
-    document.querySelectorAll('a.nav-link').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const id = a.getAttribute('href');
-        const el = document.querySelector(id);
-        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      document.getElementById("themeToggle").addEventListener("click", () => {
+        body.classList.toggle("light");
+        localStorage.setItem(
+          "rs-theme",
+          body.classList.contains("light") ? "light" : "dark"
+        );
       });
-    });
 
-    // ====== Start Simulation logic (fullscreen + choice modal) ======
-    const startSimBtn = document.getElementById('startSimBtn');
-    const previewStartBtn = document.getElementById('previewStartBtn');
-    const quickStartBtn = document.getElementById('quickStartBtn');
-    const arenaStartLarge = document.getElementById('arenaStartLarge');
-    const simCancel = document.getElementById('simCancel');
-    const demoCarOption = document.getElementById('demoCarOption');
-    const arenaOption = document.getElementById('arenaOption');
-    const exitSimBtn = document.getElementById('exitSimBtn');
-
-    function openChoiceModal(){
-      simFull.classList.add('show');
-      simFull.setAttribute('aria-hidden','false');
-    }
-    function closeChoiceModal(){
-      simFull.classList.remove('show');
-      simFull.setAttribute('aria-hidden','true');
-    }
-
-    // Request full screen and show choice modal
-    async function startSimulationFlow(){
-      try {
-        // request fullscreen on body (replace all contents visually)
-        if(document.fullscreenElement == null){
-          await document.documentElement.requestFullscreen();
-        }
-      } catch (err){
-        console.warn('Fullscreen request failed', err);
-      }
-      openChoiceModal();
-    }
-
-    // Attach triggers
-    [startSimBtn, previewStartBtn, quickStartBtn, arenaStartLarge].forEach(btn=>{
-      btn.addEventListener('click', startSimulationFlow);
-    });
-
-    // Cancel
-    simCancel.addEventListener('click', async ()=>{
-      closeChoiceModal();
-      try { if(document.fullscreenElement) await document.exitFullscreen(); } catch(e){}
-    });
-
-    // ESC key also handled by fullscreenchange/keydown
-    document.addEventListener('fullscreenchange', ()=>{
-      // If user exits fullscreen with ESC, ensure overlays are closed
-      if(!document.fullscreenElement){
-        closeChoiceModal();
-        hideSimStage();
-      }
-    });
-
-    // ===== Simulation Mode handlers =====
-    const simCanvas = document.getElementById('simCanvas');
-
-    function showSimStage(){
-      closeChoiceModal();
-      simStage.classList.add('show');
-      simStage.setAttribute('aria-hidden','false');
-    }
-    function hideSimStage(){
-      simStage.classList.remove('show');
-      simStage.setAttribute('aria-hidden','true');
-      // clear canvas contents
-      simCanvas.innerHTML = '';
-    }
-
-    // Exit Simulation (button)
-    exitSimBtn.addEventListener('click', async ()=>{
-      hideSimStage();
-      try { if(document.fullscreenElement) await document.exitFullscreen(); } catch(e){}
-    });
-
-    // Demo Car Simulation creation
-    function createDemoCarSimulation(){
-      showSimStage();
-      modeBadge.textContent = 'Demo Car Simulation';
-      simCanvas.innerHTML = ''; // clear
-      // create field
-      const field = document.createElement('div');
-      field.className = 'field';
-      // add lines
-      const centerLine = document.createElement('div'); centerLine.className='line center-line'; field.appendChild(centerLine);
-      const centerCircle = document.createElement('div'); centerCircle.className='center-circle'; field.appendChild(centerCircle);
-      const penaltyL = document.createElement('div'); penaltyL.className='penalty-box-left'; field.appendChild(penaltyL);
-      const penaltyR = document.createElement('div'); penaltyR.className='penalty-box-right'; field.appendChild(penaltyR);
-      const goalL = document.createElement('div'); goalL.className='goal-left'; field.appendChild(goalL);
-      const goalR = document.createElement('div'); goalR.className='goal-right'; field.appendChild(goalR);
-
-      // Add demo CSS car
-      const carWrap = document.createElement('div');
-      carWrap.className = 'car-wrapper';
-      const car = document.createElement('div'); car.className='car';
-      car.innerHTML = '<div class="body"></div><div class="cockpit"></div><div class="spoiler"></div><div class="wheel left"></div><div class="wheel right"></div>';
-      carWrap.appendChild(car);
-
-      // place car onto field
-      field.appendChild(carWrap);
-
-      // place ball too (optional)
-      const ball = document.createElement('div'); ball.className='ball'; ball.style.left='60%'; ball.style.top='55%'; field.appendChild(ball);
-
-      // labels
-      const lPitch = document.createElement('div'); lPitch.className='label pitch'; lPitch.textContent='Pitch';
-      const lGoalL = document.createElement('div'); lGoalL.className='label goal-left'; lGoalL.textContent='Goalpost';
-      const lGoalR = document.createElement('div'); lGoalR.className='label goal-right'; lGoalR.textContent='Goalpost';
-      field.appendChild(lPitch); field.appendChild(lGoalL); field.appendChild(lGoalR);
-
-      // add dimension badge
-      const dim = document.createElement('div'); dim.className='label dim'; dim.style.position='absolute'; dim.style.right='8px'; dim.style.top='8px'; dim.textContent='Dimensions: 6 m × 4 m';
-      field.appendChild(dim);
-
-      // append
-      simCanvas.appendChild(field);
-
-      // minor interactive: clicking car toggles spin
-      let spinning = true;
-      car.addEventListener('click', ()=>{
-        spinning = !spinning;
-        if(spinning) car.style.animationPlayState = 'running';
-        else car.style.animationPlayState = 'paused';
+      // Nav anchors smooth scroll
+      document.querySelectorAll("a.nav-link").forEach((a) => {
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          const id = a.getAttribute("href");
+          const el = document.querySelector(id);
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
       });
-    }
 
-    // 3D Arena Simulation creation (no cars, only ball + labels + dimensions)
-    function createArenaOnlySimulation(){
-      showSimStage();
-      modeBadge.textContent = '3D Arena Simulation';
-      simCanvas.innerHTML = '';
-      const field = document.createElement('div'); field.className='field';
-      // lines & features
-      const centerLine = document.createElement('div'); centerLine.className='line center-line'; field.appendChild(centerLine);
-      const centerCircle = document.createElement('div'); centerCircle.className='center-circle'; field.appendChild(centerCircle);
-      const penaltyL = document.createElement('div'); penaltyL.className='penalty-box-left'; field.appendChild(penaltyL);
-      const penaltyR = document.createElement('div'); penaltyR.className='penalty-box-right'; field.appendChild(penaltyR);
-      const goalL = document.createElement('div'); goalL.className='goal-left'; field.appendChild(goalL);
-      const goalR = document.createElement('div'); goalR.className='goal-right'; field.appendChild(goalR);
+      // ====== Start Simulation logic (fullscreen + choice modal) ======
+      const startSimBtn = document.getElementById("startSimBtn");
+      const previewStartBtn = document.getElementById("previewStartBtn");
+      const quickStartBtn = document.getElementById("quickStartBtn");
+      const arenaStartLarge = document.getElementById("arenaStartLarge");
+      const simCancel = document.getElementById("simCancel");
+      const demoCarOption = document.getElementById("demoCarOption");
+      const arenaOption = document.getElementById("arenaOption");
+      const exitSimBtn = document.getElementById("exitSimBtn");
 
-      // ball centered
-      const ball = document.createElement('div'); ball.className='ball'; field.appendChild(ball);
-
-      // labels: pitch, goalpost(s), default ball position, dimensions
-      const lPitch = document.createElement('div'); lPitch.className='label pitch'; lPitch.textContent='Pitch';
-      const lGoalL = document.createElement('div'); lGoalL.className='label goal-left'; lGoalL.textContent='Goalpost';
-      const lGoalR = document.createElement('div'); lGoalR.className='label goal-right'; lGoalR.textContent='Goalpost';
-      const lBall = document.createElement('div'); lBall.className='label ball'; lBall.textContent='Default Ball Position';
-
-      const dim = document.createElement('div'); dim.className='label dim'; dim.style.position='absolute'; dim.style.right='8px'; dim.style.top='8px'; dim.textContent='Dimensions: 6 m × 4 m';
-
-      field.appendChild(lPitch); field.appendChild(lGoalL); field.appendChild(lGoalR); field.appendChild(lBall); field.appendChild(dim);
-
-      simCanvas.appendChild(field);
-    }
-
-    // Wire mode buttons
-    demoCarOption.addEventListener('click', ()=>{
-      createDemoCarSimulation();
-    });
-    arenaOption.addEventListener('click', ()=>{
-      createArenaOnlySimulation();
-    });
-
-    // If user presses Escape we will close the stage (fullscreenchange handles too)
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape'){
-        // allow default fullscreen exit; additionally hide UI if needed
-        // hideSimStage() will be called via fullscreenchange
+      function openChoiceModal() {
+        simFull.classList.add("show");
+        simFull.setAttribute("aria-hidden", "false");
       }
-    });
+      function closeChoiceModal() {
+        simFull.classList.remove("show");
+        simFull.setAttribute("aria-hidden", "true");
+      }
 
-    // When fullscreen starts, focus modal
-    document.addEventListener('fullscreenchange', ()=>{
-      if(document.fullscreenElement){
-        // show choice modal if not already visible
-        if(!simFull.classList.contains('show') && !simStage.classList.contains('show')){
-          openChoiceModal();
+      // Request full screen and show choice modal
+      async function startSimulationFlow() {
+        try {
+          // request fullscreen on body (replace all contents visually)
+          if (document.fullscreenElement == null) {
+            await document.documentElement.requestFullscreen();
+          }
+        } catch (err) {
+          console.warn("Fullscreen request failed", err);
         }
-      } else {
-        // cleanup UI if not fullscreen
+        openChoiceModal();
+      }
+
+      // Attach triggers
+      [startSimBtn, previewStartBtn, quickStartBtn, arenaStartLarge].forEach(
+        (btn) => {
+          btn.addEventListener("click", startSimulationFlow);
+        }
+      );
+
+      // Cancel
+      simCancel.addEventListener("click", async () => {
         closeChoiceModal();
+        try {
+          if (document.fullscreenElement) await document.exitFullscreen();
+        } catch (e) {}
+      });
+
+      // ESC key also handled by fullscreenchange/keydown
+      document.addEventListener("fullscreenchange", () => {
+        // If user exits fullscreen with ESC, ensure overlays are closed
+        if (!document.fullscreenElement) {
+          closeChoiceModal();
+          hideSimStage();
+        }
+      });
+
+      // ===== Simulation Mode handlers =====
+      const simCanvas = document.getElementById("simCanvas");
+
+      function showSimStage() {
+        closeChoiceModal();
+        simStage.classList.add("show");
+        simStage.setAttribute("aria-hidden", "false");
+      }
+      function hideSimStage() {
+        simStage.classList.remove("show");
+        simStage.setAttribute("aria-hidden", "true");
+        // clear canvas contents
+        simCanvas.innerHTML = "";
+      }
+
+      // Exit Simulation (button)
+      exitSimBtn.addEventListener("click", async () => {
         hideSimStage();
+        try {
+          if (document.fullscreenElement) await document.exitFullscreen();
+        } catch (e) {}
+      });
+
+      // Demo Car Simulation creation
+      function createDemoCarSimulation() {
+        showSimStage();
+        modeBadge.textContent = "Demo Car Simulation";
+        simCanvas.innerHTML = ""; // clear
+        // create field
+        const field = document.createElement("div");
+        field.className = "field";
+        // add lines
+        const centerLine = document.createElement("div");
+        centerLine.className = "line center-line";
+        field.appendChild(centerLine);
+        const centerCircle = document.createElement("div");
+        centerCircle.className = "center-circle";
+        field.appendChild(centerCircle);
+        const penaltyL = document.createElement("div");
+        penaltyL.className = "penalty-box-left";
+        field.appendChild(penaltyL);
+        const penaltyR = document.createElement("div");
+        penaltyR.className = "penalty-box-right";
+        field.appendChild(penaltyR);
+        const goalL = document.createElement("div");
+        goalL.className = "goal-left";
+        field.appendChild(goalL);
+        const goalR = document.createElement("div");
+        goalR.className = "goal-right";
+        field.appendChild(goalR);
+
+        // Add demo CSS car
+        const carWrap = document.createElement("div");
+        carWrap.className = "car-wrapper";
+        const car = document.createElement("div");
+        car.className = "car";
+        car.innerHTML =
+          '<div class="body"></div><div class="cockpit"></div><div class="spoiler"></div><div class="wheel left"></div><div class="wheel right"></div>';
+        carWrap.appendChild(car);
+
+        // place car onto field
+        field.appendChild(carWrap);
+
+        // place ball too (optional)
+        const ball = document.createElement("div");
+        ball.className = "ball";
+        ball.style.left = "60%";
+        ball.style.top = "55%";
+        field.appendChild(ball);
+
+        // labels
+        const lPitch = document.createElement("div");
+        lPitch.className = "label pitch";
+        lPitch.textContent = "Pitch";
+        const lGoalL = document.createElement("div");
+        lGoalL.className = "label goal-left";
+        lGoalL.textContent = "Goalpost";
+        const lGoalR = document.createElement("div");
+        lGoalR.className = "label goal-right";
+        lGoalR.textContent = "Goalpost";
+        field.appendChild(lPitch);
+        field.appendChild(lGoalL);
+        field.appendChild(lGoalR);
+
+        // add dimension badge
+        const dim = document.createElement("div");
+        dim.className = "label dim";
+        dim.style.position = "absolute";
+        dim.style.right = "8px";
+        dim.style.top = "8px";
+        dim.textContent = "Dimensions: 6 m × 4 m";
+        field.appendChild(dim);
+
+        // append
+        simCanvas.appendChild(field);
+
+        // minor interactive: clicking car toggles spin
+        let spinning = true;
+        car.addEventListener("click", () => {
+          spinning = !spinning;
+          if (spinning) car.style.animationPlayState = "running";
+          else car.style.animationPlayState = "paused";
+        });
       }
-    });
 
-    // Cancel / exit buttons ensure proper cleanup
-    document.getElementById('simCancel').addEventListener('click', async ()=>{
-      closeChoiceModal();
-      try { if(document.fullscreenElement) await document.exitFullscreen(); } catch(e){}
-    });
+      // 3D Arena Simulation creation (no cars, only ball + labels + dimensions)
+      function createArenaOnlySimulation() {
+        showSimStage();
+        modeBadge.textContent = "3D Arena Simulation";
+        simCanvas.innerHTML = "";
+        const field = document.createElement("div");
+        field.className = "field";
+        // lines & features
+        const centerLine = document.createElement("div");
+        centerLine.className = "line center-line";
+        field.appendChild(centerLine);
+        const centerCircle = document.createElement("div");
+        centerCircle.className = "center-circle";
+        field.appendChild(centerCircle);
+        const penaltyL = document.createElement("div");
+        penaltyL.className = "penalty-box-left";
+        field.appendChild(penaltyL);
+        const penaltyR = document.createElement("div");
+        penaltyR.className = "penalty-box-right";
+        field.appendChild(penaltyR);
+        const goalL = document.createElement("div");
+        goalL.className = "goal-left";
+        field.appendChild(goalL);
+        const goalR = document.createElement("div");
+        goalR.className = "goal-right";
+        field.appendChild(goalR);
 
-    // Exit sim button
-    exitSimBtn.addEventListener('click', async ()=>{
-      hideSimStage();
-      try { if(document.fullscreenElement) await document.exitFullscreen(); } catch(e){}
-    });
+        // ball centered
+        const ball = document.createElement("div");
+        ball.className = "ball";
+        field.appendChild(ball);
 
-    // Small helpers: register submit + messages
-    function toast(msg){
-      const t = document.createElement('div'); t.textContent = msg; t.style.position='fixed'; t.style.left='50%'; t.style.transform='translateX(-50%)'; t.style.bottom='30px'; t.style.padding='10px 14px'; t.style.background='linear-gradient(90deg,var(--accent),var(--accent-2))'; t.style.color='#02121a'; t.style.borderRadius='10px'; t.style.zIndex=9999; document.body.appendChild(t);
-      setTimeout(()=> t.style.opacity = '0.01', 2200); setTimeout(()=> t.remove(), 2600);
-    }
+        // labels: pitch, goalpost(s), default ball position, dimensions
+        const lPitch = document.createElement("div");
+        lPitch.className = "label pitch";
+        lPitch.textContent = "Pitch";
+        const lGoalL = document.createElement("div");
+        lGoalL.className = "label goal-left";
+        lGoalL.textContent = "Goalpost";
+        const lGoalR = document.createElement("div");
+        lGoalR.className = "label goal-right";
+        lGoalR.textContent = "Goalpost";
+        const lBall = document.createElement("div");
+        lBall.className = "label ball";
+        lBall.textContent = "Default Ball Position";
 
-    document.getElementById('submitRegister').addEventListener('click', ()=>{
-      const team = document.getElementById('teamName').value.trim();
-      const college = document.getElementById('college').value.trim();
-      const email = document.getElementById('email').value.trim();
-      if(!team || !college || !email){ toast('Please fill Team, College & Email'); return; }
-      toast('Registration submitted — confirmation sent to ' + email);
-      document.getElementById('teamName').value=''; document.getElementById('college').value=''; document.getElementById('email').value='';
-    });
+        const dim = document.createElement("div");
+        dim.className = "label dim";
+        dim.style.position = "absolute";
+        dim.style.right = "8px";
+        dim.style.top = "8px";
+        dim.textContent = "Dimensions: 6 m × 4 m";
 
-    document.getElementById('downloadRules2').addEventListener('click', ()=>{
-      const rulesText = Array.from(document.querySelectorAll('#rules ol li')).map((li,i)=> (i+1)+'. '+li.innerText).join('\n\n');
-      const blob = new Blob([rulesText], {type:'text/plain'});
-      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'RoboSoccer_Rules.txt'; a.click(); a.remove();
-      toast('Rules downloaded');
-    });
+        field.appendChild(lPitch);
+        field.appendChild(lGoalL);
+        field.appendChild(lGoalR);
+        field.appendChild(lBall);
+        field.appendChild(dim);
 
-    // basic preview 'Start' uses same flow
-    document.getElementById('previewStartBtn').addEventListener('click', startSimulationFlow);
-
-    // small helpers: view schedule/rules buttons
-    document.getElementById('viewScheduleBtn').addEventListener('click', ()=> document.getElementById('schedule').scrollIntoView({behavior:'smooth'}));
-    document.getElementById('viewRulesBtn').addEventListener('click', ()=> document.getElementById('rules').scrollIntoView({behavior:'smooth'}));
-
-    // Accessibility: ensure modal close on click outside
-    simFull.addEventListener('click', (e)=>{
-      if(e.target === simFull){
-        // close fullscreen and modal
-        closeChoiceModal();
-        if(document.fullscreenElement) document.exitFullscreen().catch(()=>{});
+        simCanvas.appendChild(field);
       }
-    });
 
-    // If user leaves fullscreen via browser, ensure UI hidden
-    document.addEventListener('visibilitychange', ()=>{
-      if(document.visibilityState === 'visible' && !document.fullscreenElement){
-        closeChoiceModal(); hideSimStage();
+      // Wire mode buttons
+      demoCarOption.addEventListener("click", () => {
+        createDemoCarSimulation();
+      });
+      arenaOption.addEventListener("click", () => {
+        createArenaOnlySimulation();
+      });
+
+      // If user presses Escape we will close the stage (fullscreenchange handles too)
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          // allow default fullscreen exit; additionally hide UI if needed
+          // hideSimStage() will be called via fullscreenchange
+        }
+      });
+
+      // When fullscreen starts, focus modal
+      document.addEventListener("fullscreenchange", () => {
+        if (document.fullscreenElement) {
+          // show choice modal if not already visible
+          if (
+            !simFull.classList.contains("show") &&
+            !simStage.classList.contains("show")
+          ) {
+            openChoiceModal();
+          }
+        } else {
+          // cleanup UI if not fullscreen
+          closeChoiceModal();
+          hideSimStage();
+        }
+      });
+
+      // Cancel / exit buttons ensure proper cleanup
+      document
+        .getElementById("simCancel")
+        .addEventListener("click", async () => {
+          closeChoiceModal();
+          try {
+            if (document.fullscreenElement) await document.exitFullscreen();
+          } catch (e) {}
+        });
+
+      // Exit sim button
+      exitSimBtn.addEventListener("click", async () => {
+        hideSimStage();
+        try {
+          if (document.fullscreenElement) await document.exitFullscreen();
+        } catch (e) {}
+      });
+
+      // ===== Register (QR) helpers =====
+      const registrationLink = "YOUR_REGISTRATION_LINK"; // e.g., paste the form link string; or leave '' to hide text
+
+      // Minimal toast (kept small and theme-matched)
+      function toast(msg) {
+        const t = document.createElement("div");
+        t.textContent = msg;
+        t.style.position = "fixed";
+        t.style.left = "50%";
+        t.style.transform = "translateX(-50%)";
+        t.style.bottom = "30px";
+        t.style.padding = "10px 14px";
+        t.style.background =
+          "linear-gradient(90deg,var(--accent),var(--accent-2))";
+        t.style.color = "#02121a";
+        t.style.borderRadius = "10px";
+        t.style.zIndex = 9999;
+        t.style.boxShadow = "0 10px 30px rgba(2,6,23,0.45)";
+        document.body.appendChild(t);
+        setTimeout(() => (t.style.opacity = "0.02"), 1800);
+        setTimeout(() => t.remove(), 2200);
       }
-    });
-  </script>
-</body>
+
+      (function initQRHelpers() {
+        const qrImg = document.getElementById("regQR");
+        const linkShown = document.getElementById("regLinkShown");
+        const copyBtn = document.getElementById("copyLinkBtn");
+        const saveBtn = document.getElementById("saveQRBtn");
+
+        // Show link if provided
+        if (linkShown) {
+          if (registrationLink && registrationLink.trim()) {
+            linkShown.textContent = "Link: " + registrationLink.trim();
+          } else {
+            linkShown.textContent = "";
+          }
+        }
+
+        // Copy link
+        if (copyBtn) {
+          copyBtn.addEventListener("click", async () => {
+            if (!registrationLink || !registrationLink.trim()) {
+              toast("No registration link set");
+              return;
+            }
+            try {
+              await navigator.clipboard.writeText(registrationLink.trim());
+              toast("Registration link copied");
+            } catch {
+              toast("Copy failed");
+            }
+          });
+        }
+
+        const openBtn = document.getElementById("openQRBtn");
+        if (openBtn && qrImg) {
+          openBtn.addEventListener("click", () => {
+            window.open(qrImg.src, "_blank");
+          });
+        }
+
+        // // Small helpers: register submit + messages
+        // function toast(msg){
+        //   const t = document.createElement('div'); t.textContent = msg; t.style.position='fixed'; t.style.left='50%'; t.style.transform='translateX(-50%)'; t.style.bottom='30px'; t.style.padding='10px 14px'; t.style.background='linear-gradient(90deg,var(--accent),var(--accent-2))'; t.style.color='#02121a'; t.style.borderRadius='10px'; t.style.zIndex=9999; document.body.appendChild(t);
+        //   setTimeout(()=> t.style.opacity = '0.01', 2200); setTimeout(()=> t.remove(), 2600);
+        // }
+
+        // document.getElementById('submitRegister').addEventListener('click', ()=>{
+        //   const team = document.getElementById('teamName').value.trim();
+        //   const college = document.getElementById('college').value.trim();
+        //   const email = document.getElementById('email').value.trim();
+        //   if(!team || !college || !email){ toast('Please fill Team, College & Email'); return; }
+        //   toast('Registration submitted — confirmation sent to ' + email);
+        //   document.getElementById('teamName').value=''; document.getElementById('college').value=''; document.getElementById('email').value='';
+        // });
+
+        document
+          .getElementById("downloadRules2")
+          .addEventListener("click", () => {
+            const rulesText = Array.from(
+              document.querySelectorAll("#rules ol li")
+            )
+              .map((li, i) => i + 1 + ". " + li.innerText)
+              .join("\n\n");
+            const blob = new Blob([rulesText], { type: "text/plain" });
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "RoboSoccer_Rules.txt";
+            a.click();
+            a.remove();
+            toast("Rules downloaded");
+          });
+
+        // basic preview 'Start' uses same flow
+        document
+          .getElementById("previewStartBtn")
+          .addEventListener("click", startSimulationFlow);
+
+        // small helpers: view schedule/rules buttons
+        document
+          .getElementById("viewScheduleBtn")
+          .addEventListener("click", () =>
+            document
+              .getElementById("schedule")
+              .scrollIntoView({ behavior: "smooth" })
+          );
+        document
+          .getElementById("viewRulesBtn")
+          .addEventListener("click", () =>
+            document
+              .getElementById("rules")
+              .scrollIntoView({ behavior: "smooth" })
+          );
+
+        // Accessibility: ensure modal close on click outside
+        simFull.addEventListener("click", (e) => {
+          if (e.target === simFull) {
+            // close fullscreen and modal
+            closeChoiceModal();
+            if (document.fullscreenElement)
+              document.exitFullscreen().catch(() => {});
+          }
+        });
+
+        // If user leaves fullscreen via browser, ensure UI hidden
+        document.addEventListener("visibilitychange", () => {
+          if (
+            document.visibilityState === "visible" &&
+            !document.fullscreenElement
+          ) {
+            closeChoiceModal();
+            hideSimStage();
+          }
+        });
+      })();
+    </script>
+  </body>
 </html>
