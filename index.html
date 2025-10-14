@@ -17,6 +17,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <style>
+      /* ======= THEME VARIABLES ======= */
       :root {
         --bg: #0b1220;
         --card: rgba(255, 255, 255, 0.03);
@@ -41,46 +42,45 @@
         --text: #071227;
       }
 
-      /* ======= GLOBAL LAYOUT ======= */
+      /* ======= BASIC LAYOUT ======= */
       * {
         box-sizing: border-box;
       }
       html,
       body {
-        min-height: 100%;
+        height: 100%;
         margin: 0;
-      }
-      body {
-        background: repeating-linear-gradient(
-            135deg,
-            rgba(48, 60, 90, 0.09) 0px 2px,
-            transparent 2px 44px
-          ),
-          repeating-linear-gradient(
-            45deg,
-            rgba(38, 49, 71, 0.08) 0px 4px,
-            transparent 4px 44px
-          ),
-          linear-gradient(180deg, #101824 0%, #0a101a 90%);
-        background-color: #0d1425;
-        color: whitesmoke;
-        font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial;
+        /* background: linear-gradient(
+          180deg,
+          var(--bg),
+          color-mix(in srgb, var(--bg) 80%, black 6%)
+        );
+        color: var(--text);
         -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        max-width: 100vw;
+        -moz-osx-font-smoothing: grayscale; */
+        body {
+          background: repeating-linear-gradient(
+              135deg,
+              rgba(48, 60, 90, 0.09) 0px 2px,
+              transparent 2px 44px
+            ),
+            repeating-linear-gradient(
+              45deg,
+              rgba(38, 49, 71, 0.08) 0px 4px,
+              transparent 4px 44px
+            ),
+            linear-gradient(180deg, #101824 0%, #0a101a 90%);
+          background-color: #0d1425; /* solid fallback */
+          color: whitesmoke;
+          min-height: 100vh;
+        }
       }
-
-      /* Container centers content and adds padding on all devices */
-      .container,
-      main.container {
-        width: 100%;
+      /* .container {
         max-width: var(--max-w);
         margin: 0 auto;
-        padding: 0 18px;
-      }
+        padding: 20px;
+      } */
 
-      /* ======= HEADER/NAV ======= */
       header {
         height: var(--nav-h);
         display: flex;
@@ -120,11 +120,8 @@
       }
       nav {
         display: flex;
-        flex: 1;
-        gap: 18px;
+        gap: 12px;
         align-items: center;
-        justify-content: flex-end;
-        flex-wrap: wrap;
       }
       .nav-link {
         padding: 8px 12px;
@@ -133,19 +130,15 @@
         color: var(--text);
         font-weight: 600;
         transition: transform 160ms ease;
-        font-size: 1.06rem;
       }
       .nav-link:hover {
         transform: translateY(-3px);
       }
-
       .controls {
         display: flex;
         gap: 10px;
         align-items: center;
       }
-
-      /* ======= BUTTONS ======= */
       .btn {
         background: linear-gradient(90deg, var(--accent), var(--accent-2));
         color: #02121a;
@@ -155,52 +148,38 @@
         cursor: pointer;
         font-weight: 700;
         transition: transform 160ms ease;
-        font-size: 1.08rem;
       }
       .btn.secondary {
         background: transparent;
         color: var(--text);
-        border: 1px solid rgba(255, 255, 255, 0.09);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        font-weight: 700;
       }
       .btn:active {
         transform: translateY(1px);
       }
-
-      /* ======= HERO SECTION ======= */
       .hero {
         display: grid;
         grid-template-columns: 1fr 520px;
-        gap: 30px;
+        gap: 28px;
         align-items: center;
         padding: 34px 0;
-        max-width: var(--max-w);
       }
-
-      /* Cards */
-      .card,
       .hero-card {
         background: var(--card);
         padding: 26px;
         border-radius: var(--radius);
         box-shadow: 0 12px 36px rgba(2, 6, 23, 0.45);
-        margin: 10px 0;
-        max-width: 540px;
-        min-width: 280px;
-        width: 100%;
-        box-sizing: border-box;
-      }
-      .hero-card {
-        padding: 32px 26px;
       }
       .eyebrow {
         font-family: Orbitron;
         color: var(--accent);
         font-weight: 700;
         letter-spacing: 0.6px;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
       h2 {
-        margin: 14px 0 12px;
+        margin: 8px 0 12px;
         font-size: 2rem;
       }
       p.muted {
@@ -218,6 +197,12 @@
         align-items: center;
         gap: 12px;
         margin-bottom: 16px;
+      }
+      .card {
+        background: var(--card);
+        padding: 18px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.35);
       }
 
       /* Timeline & rules styling */
@@ -246,12 +231,10 @@
       ol {
         margin: 0;
         padding-left: 18px;
-        font-size: 1.08rem;
       }
 
       /* Arena small preview & large placeholder */
       #arenaPreview {
-        min-height: 320px;
         height: 420px;
         border-radius: 12px;
         overflow: hidden;
@@ -273,8 +256,7 @@
         z-index: 6;
       }
 
-      /* ======= SIMULATION MODALS AND ARENA ======= */
-      /* Fullscreen sim modal */
+      /* Fullscreen simulation overlay (hidden until start) */
       .sim-fullscreen {
         position: fixed;
         inset: 0;
@@ -292,9 +274,10 @@
       .sim-fullscreen.show {
         display: flex;
       }
+
       .sim-modal {
         width: 920px;
-        max-width: 98vw;
+        max-width: 94vw;
         background: linear-gradient(
           180deg,
           rgba(255, 255, 255, 0.02),
@@ -305,40 +288,44 @@
         box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
         transform: translateY(10px);
       }
-
-      /* Responsive sim layout */
-      .sim-title,
+      .sim-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
       .sim-buttons {
         display: flex;
         gap: 12px;
-        margin-bottom: 12px;
-        flex-wrap: wrap;
         justify-content: center;
+        margin: 18px 0;
+        flex-wrap: wrap;
       }
       .sim-option {
-        min-width: 200px;
-        padding: 14px 15px;
+        min-width: 220px;
+        padding: 14px 18px;
         border-radius: 10px;
         background: linear-gradient(90deg, var(--accent), var(--accent-2));
         color: #02121a;
         font-weight: 800;
         cursor: pointer;
         text-align: center;
-        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
         transition: transform 160ms ease;
       }
       .sim-option.secondary {
         background: transparent;
         color: var(--text);
         border: 1px solid rgba(255, 255, 255, 0.06);
-        font-weight: 700;
         box-shadow: none;
+        font-weight: 700;
       }
       .sim-option:hover {
         transform: translateY(-6px);
       }
 
-      /* Fullscreen simulation canvas area */
+      /* Fullscreen simulation canvas area (replaces site content visually) */
       .sim-stage {
         position: fixed;
         inset: 0;
@@ -351,17 +338,6 @@
       }
       .sim-stage.show {
         display: flex;
-      }
-      .sim-canvas {
-        width: min(1200px, 96vw);
-        height: min(720px, 80vh);
-        background: linear-gradient(180deg, #0b3a25, #06311b);
-        border-radius: 14px;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
       }
       .sim-topbar {
         position: absolute;
@@ -387,22 +363,31 @@
         cursor: pointer;
       }
 
-      /* Responsive content inside sim */
+      /* Sim content layout */
       .sim-content {
-        width: 100%;
-        max-width: 1100px;
+        flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 60px 12px;
+        padding: 80px 20px;
         gap: 20px;
-        flex-wrap: wrap;
+      }
+      .sim-canvas {
+        width: min(1200px, 96vw);
+        height: min(720px, 80vh);
+        background: linear-gradient(180deg, #0b3a25, #06311b);
+        border-radius: 14px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
       }
 
-      /* FIELD (pitch) */
+      /* FIELD (pitch) = realistic tones with nod to futuristic */
       .field {
-        width: 97%;
-        height: 94%;
+        width: 96%;
+        height: 92%;
         max-width: 1080px;
         max-height: 640px;
         border-radius: 8px;
@@ -423,6 +408,8 @@
         border: 6px solid rgba(255, 255, 255, 0.04);
         transform-style: preserve-3d;
       }
+
+      /* Lines */
       .line {
         position: absolute;
         background: white;
@@ -436,6 +423,7 @@
         transform: translateX(-50%);
       }
       .center-circle {
+        position: absolute;
         left: 50%;
         top: 50%;
         width: 160px;
@@ -446,6 +434,7 @@
       }
       .penalty-box-left,
       .penalty-box-right {
+        position: absolute;
         top: 20%;
         width: 18%;
         height: 60%;
@@ -459,6 +448,7 @@
       }
       .goal-left,
       .goal-right {
+        position: absolute;
         width: 6%;
         height: 12%;
         top: 44%;
@@ -476,14 +466,14 @@
         border-radius: 4px;
       }
 
-      /* Ball */
+      /* Ball (CSS sphere) */
       .ball {
         width: 46px;
         height: 46px;
         border-radius: 50%;
         background: radial-gradient(
             circle at 20% 25%,
-            #fff 10%,
+            #ffffff 10%,
             #f0f0f0 28%,
             #cfcfcf 60%
           ),
@@ -501,14 +491,14 @@
           transform: translate(-50%, -50%) scale(0.995);
         }
         50% {
-          transform: translate(-50%, -50%) scale(1.01);
+          transform: translate(-50%, -50%) scale(1.02);
         }
         100% {
           transform: translate(-50%, -50%) scale(0.995);
         }
       }
 
-      /* Car */
+      /* Demo Car (CSS 3D) */
       .car-wrapper {
         position: absolute;
         left: 30%;
@@ -614,6 +604,8 @@
         border: 1px solid rgba(255, 255, 255, 0.06);
         font-weight: 700;
       }
+
+      /* Goalpost labels */
       .label.pitch {
         left: 6%;
         top: 6%;
@@ -634,6 +626,7 @@
         transform: translate(-50%, -190%);
       }
 
+      /* Exit + mode indicator */
       .mode-indicator {
         position: absolute;
         left: 12px;
@@ -646,101 +639,17 @@
         box-shadow: 0 12px 34px rgba(0, 0, 0, 0.5);
       }
 
-      /* Responsive Breakpoints */
-      @media (max-width: 1100px) {
-        .container,
-        main.container {
-          padding: 0 8px;
-        }
+      /* Responsive */
+      @media (max-width: 980px) {
         .hero {
           grid-template-columns: 1fr;
-          gap: 22px;
-          padding: 20px 0;
-        }
-        .card,
-        .hero-card,
-        #arenaPreview {
-          max-width: 98vw;
-          padding: 19px 8px;
         }
         .sim-modal {
-          max-width: 98vw;
-          padding: 12px;
-        }
-      }
-      @media (max-width: 767px) {
-        header {
-          height: 56px;
-          padding: 0 6px;
-        }
-        .logo {
-          width: 36px;
-          height: 36px;
-        }
-        nav {
-          gap: 10px;
-        }
-        .hero {
-          grid-template-columns: 1fr;
-          gap: 12px;
-          padding: 12px 0;
-        }
-        section,
-        .card,
-        .hero-card,
-        #arenaPreview {
-          padding: 11px 2vw;
-        }
-        h2 {
-          font-size: 1.28rem;
+          width: 94vw;
+          padding: 18px;
         }
         .sim-canvas {
-          height: 240px;
-        }
-      }
-      @media (max-width: 540px) {
-        header,
-        nav,
-        .controls {
-          flex-direction: column;
-          align-items: stretch;
-        }
-        .logo {
-          width: 28px;
-          height: 28px;
-        }
-        .hero-card,
-        .card {
-          min-width: 90vw;
-        }
-        #arenaPreview {
-          min-height: 220px;
-        }
-        .sim-modal {
-          width: 99vw;
-          padding: 7px;
-        }
-        .sim-canvas {
-          height: 160px;
-        }
-        h2 {
-          font-size: 1.08rem;
-        }
-        .btn,
-        .btn.secondary {
-          font-size: 0.98rem;
-          padding: 9px 6px;
-        }
-      }
-      /* Small phone fallback */
-      @media (max-width: 360px) {
-        .container,
-        main.container {
-          padding: 0 1px;
-        }
-        .section-title,
-        .timeline-item {
-          gap: 6px;
+          height: 60vh;
         }
       }
     </style>
