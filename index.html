@@ -9,7 +9,13 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@600&display=swap"
       rel="stylesheet"
     />
-
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="./assets/Logo GSV-removebg (1).png"
+    />
+    <link rel="stylesheet" href="style.css" />
     <style>
       /* ======= THEME VARIABLES ======= */
       :root {
@@ -53,11 +59,12 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
-      .container {
+      /* .container {
         max-width: var(--max-w);
         margin: 0 auto;
         padding: 20px;
-      }
+      } */
+
       header {
         height: var(--nav-h);
         display: flex;
@@ -664,9 +671,9 @@
         </nav>
 
         <div class="controls">
-          <button id="themeToggle" class="btn secondary">
+          <!-- <button id="themeToggle" class="btn secondary">
             <span id="themeIcon">
-              <!-- Default: Sun icon for light mode -->
+              //Default: Sun icon for light mode 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
@@ -680,9 +687,9 @@
                 />
               </svg>
             </span>
-          </button>
+          </button> -->
 
-          <button id="startSimBtn" class="btn">Start Simulation</button>
+          <!-- <button id="startSimBtn" class="btn">Start Simulation</button> -->
         </div>
       </div>
     </header>
@@ -765,185 +772,132 @@
 
       <!-- SCHEDULE -->
       <section id="schedule">
-<h3 style="margin:0 0 14px 0; font-size:1.5rem;">Schedule</h3>
-        <div class="timeline card">
-          <div class="timeline-item">
-            <div class="time">14/10/2025</div>
-            <div>
-              <strong>Team Registration Starts</strong>
-              <div class="muted"></div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="time">01/11/2025</div>
-            <div>
-              <strong>Query and QnA Session</strong>
-              <div class="muted">Answering all issues and doubts.</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="time">08/11/2025</div>
-            <div>
-              <strong>Team Registration Ends</strong>
-              <div class="muted">Time till 07/11/2025 23:59 hrs</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="time">13/11/2025</div>
-            <div>
-              <strong>Round I - Bot Presentation & Briefing</strong>
-              <div class="muted">
-                Team check-in, components inspection & rules briefing session.
-              </div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="time">15/11/2025</div>
-            <div>
-              <strong>Round II - Final Round</strong>
-              <div class="muted">Championship match !</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="time">16/11/2025</div>
-            <div>
-              <strong>Next Announcement from OC on Official Platform!</strong>
-              <div class="muted"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+  <div class="section-title" style="justify-content:center;">
+    <h3 style="text-align:center; font-size:2rem; margin-bottom:0;">Schedule</h3>
+  </div>
+  <div
+    class="card"
+    style="max-width:640px; margin:32px auto 0 auto; padding:32px 32px 24px 32px; border-radius:18px; box-shadow:0 12px 40px rgba(2,6,23,0.17); display:flex; flex-direction:column; align-items:center; background:var(--card);"
+  >
+    <div class="timeline" style="width:100%; max-width:510px;">
+      <div class="timeline-item" style="padding:10px 0;">
+        <div class="time" style="min-width:90px; color:var(--accent); font-weight:700;">14/10/2025</div>
+        <div><strong>Team Registration Starts</strong></div>
+      </div>
+      <div class="timeline-item" style="padding:10px 0;">
+        <div class="time" style="min-width:90px; color:var(--accent); font-weight:700;">01/11/2025</div>
+        <div><strong>Query and QnA Session</strong><div class="muted">Answering all issues and doubts.</div></div>
+      </div>
+      <div class="timeline-item" style="padding:10px 0;">
+        <div class="time" style="min-width:90px; color:var(--accent); font-weight:700;">08/11/2025</div>
+        <div><strong>Team Registration Ends</strong><div class="muted">Till 07/11/2025 23:59 hrs</div></div>
+      </div>
+      <div class="timeline-item" style="padding:10px 0;">
+        <div class="time" style="min-width:90px; color:var(--accent); font-weight:700;">13/11/2025</div>
+        <div><strong>Round I - Bot Presentation & Briefing</strong><div class="muted">Check-in, components inspection, rules briefing.</div></div>
+      </div>
+      <div class="timeline-item" style="padding:10px 0;">
+        <div class="time" style="min-width:90px; color:var(--accent); font-weight:700;">15/11/2025</div>
+        <div><strong>Round II - Final Round</strong><div class="muted">Championship match!</div></div>
+      </div>
+      <div class="timeline-item" style="padding:10px 0;">
+        <div class="time" style="min-width:90px; color:var(--accent); font-weight:700;">16/11/2025</div>
+        <div><strong>Next Announcement</strong><div class="muted">From OC on Official Platform</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <!-- RULES -->
-      <section id="rules">
-        <h3 style="margin:0 0 14px 0; font-size:1.5rem;">General Rules</h3>
-        <div class="card">
-          <ol>
-            <li><strong>Team:</strong> 2 to 4 students.</li>
-            <li>
-              <strong>Robot dimensions:</strong> (l × b × h) ≤ (35cm × 25cm ×
-              15cm), ≤ 2kg weight.
-            </li>
-            <li>
-              <strong>Autonomy:</strong> Bots must be manually controlled (wired
-              or wireless)...(More about this in Official Rulebook)
-            </li>
-            <li>
-              <strong>Batteries:</strong> Power supply must be onboard and ≤ 24V
-              DC. Teams must provide inspection sheet.
-            </li>
-            <li>
-              <strong>Match format:</strong> Knockout tournament; one-on-one
-              matches
-            </li>
-            <li>
-              <strong>Scoring:</strong> Goal = 50 point. Own goals count for
-              opponent. Referee decisions final.
-            </li>
-            <li>
-              <strong>Safety:</strong> Every bot must have a protected sheet to
-              ensure safety of itself as well as the opponents bot
-            </li>
-            <li>
-              <strong>Penalties:</strong> Unsportsmanlike conduct or sabotage
-              leads to penalties or disqualification.
-            </li>
-          </ol>
-        </div>
-      </section>
+    <section id="rules">
+      <div class="section-title" style="justify-content:center;">
+        <h3 style="text-align:center; font-size:2rem; margin-bottom:0;">General Rules</h3>
+      </div>
+      <div class="card"
+        style=" max-width:900px; width:100%; margin:32px auto 0 auto; padding:32px 32px 24px 32px; border-radius:18px; box-shadow:0 12px 40px rgba(2,6,23,0.17); background:var(--card); display:flex; flex-direction:column; align-items:center; ">
+        <ol
+          style=" width:100%; max-width:760px; margin:0; padding-left:0; list-style-position:inside; text-align:center; font-size:1.14rem; color:var(--text); line-height:1.6; ">
+          <li style="margin:6px 0;"><strong>Team:</strong> 2 to 4 students.</li>
+          <li style="margin:6px 0;"><strong>Robot dimensions:</strong> (l × b × h) ≤ (35cm × 25cm × 15cm), ≤ 2kg weight.
+          </li>
+          <li style="margin:6px 0;"><strong>Autonomy:</strong> Manual control (wired or wireless)... (More in Official
+            Rulebook)</li>
+          <li style="margin:6px 0;"><strong>Batteries:</strong> Onboard, ≤ 24V DC. Teams must provide inspection sheet.</li>
+          <li style="margin:6px 0;"><strong>Match format:</strong> Knockout, one-on-one matches.</li>
+          <li style="margin:6px 0;"><strong>Scoring:</strong> Goal = 50 points. Own goals count for opponent. Referee
+            decisions final.</li>
+          <li style="margin:6px 0;"><strong>Safety:</strong> Bots must have protective sheets for safety.</li>
+          <li style="margin:6px 0;"><strong>Penalties:</strong> Unsportsmanlike conduct/sabotage =
+            penalties/disqualification.</li>
+        </ol>
+      </div>
+    </section>
+
 
       <!-- ARENA SECTION -->
       <section id="arena">
-        <h3 style="margin:0 0 14px 0; font-size:1.5rem;">Arena</h3>
-        <div class="card">
-          <p class="muted">
-            This page contains an interactive simulation demo. Click
-            <strong>Start Simulation</strong> to open fullscreen simulation
-            modes.
-          </p>
-          <div style="display: flex; gap: 12px; margin-top: 12px">
-            <button class="btn" id="arenaStartLarge">Start Simulation</button>
-            <button class="btn secondary" id="arenaInspect">
-              Inspect Arena
-            </button>
-          </div>
-        </div>
-      </section>
+  <div class="section-title" style="justify-content:center;">
+    <h3 style="text-align:center; font-size:2rem; margin-bottom:0;">3D Arena</h3>
+  </div>
+  <div
+    class="card"
+    style="max-width:640px; margin:32px auto 0 auto; padding:32px 32px 24px 32px; border-radius:18px; box-shadow:0 12px 40px rgba(2,6,23,0.17); display:flex; flex-direction:column; align-items:center; background:var(--card);"
+  >
+    <p class="muted" style="text-align:center; margin-bottom:14px;">
+      This page contains an interactive simulation demo. Click <strong>Start</strong> to explore the arena modes.
+    </p>
+    <div style="display:flex; gap:22px; margin-top:12px;">
+      <button class="btn" id="arenaStartLarge" style="font-size:1.14rem; padding:12px 34px;">Start Simulation</button>
+      <button class="btn secondary" id="arenaInspect" style="font-size:1.11rem; padding:11px 28px;">Inspect Arena</button>
+    </div>
+  </div>
+</section>
 
-      <!-- REGISTER (QR-based) -->
-      <section id="register">
-        <h3 style="margin:0 0 14px 0; font-size:1.5rem;">Register</h3>
-        <div
-          class="card"
-          style="display: flex; gap: 18px; flex-wrap: wrap; align-items: center"
-        >
-          <div style="flex: 1; min-width: 280px">
-            <p class="muted" style="margin: 0 0 10px">
-              Scan the QR to register your team.
-            </p>
 
-            <!-- QR code image placeholder (replace src with your QR image file path) -->
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 16px;
-                flex-wrap: wrap;
-              "
-            >
-              <img
-                id="regQR"
-                src="assets/robosoccer-qr.png"
-                alt="Registration QR"
-                style="
-                  width: 220px;
-                  height: 220px;
-                  background: #fff;
-                  padding: 10px;
-                  border-radius: 10px;
-                  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.35);
-                  image-rendering: pixelated;
-                "
-              />
-              <div style="flex: 1; min-width: 220px">
-                <p
-                  class="muted"
-                  id="regLinkShown"
-                  style="word-break: break-all"
-                ></p>
-                <div
-                  style="
-                    display: flex;
-                    gap: 8px;
-                    flex-wrap: wrap;
-                    margin-top: 8px;
-                  "
-                >
-                  <button class="btn" id="openQRBtn">Open QR</button>
-                  <button class="btn secondary" id="copyLinkBtn">
-                    Copy Link
-                  </button>
-                  <button class="btn secondary" id="downloadRules2">
-                    Download Rules
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div style="width: 320px">
-            <h4 style="margin-top: 0">Registration</h4>
-            <p class="muted" style="margin: 0 0 8px">Opens: 14/10/2025</p>
-            <p class="muted" style="margin: 0 0 8px">
-              Closes: 08/11/2025 23:59 hrs
-            </p>
-            <p class="muted" style="margin: 0 0 8px">Fee: ₹500 / team</p>
-            <p class="muted" style="margin: 0">
-              Contact: events@robosoccer.org
-            </p>
-          </div>
-        </div>
-      </section>
+      <!-- REGISTER (QR-based, centered) -->
+<section id="register">
+  <div class="section-title" style="justify-content:center;">
+    <h3 style="text-align:center; font-size:2rem; margin-bottom:0;">Register</h3>
+  </div>
+  <div
+    class="card"
+    style="
+      max-width:640px;
+      margin: 32px auto 0 auto;
+      padding:32px 32px 28px 32px;
+      border-radius:18px;
+      box-shadow:0 12px 40px rgba(2,6,23,0.17);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--card);
+    "
+  >
+    <p class="muted" style="margin:0 0 18px 0; font-size:1.17rem; text-align:center;">
+      Scan the QR to register your team!
+    </p>
+    <!-- QR code image (centered, big) -->
+    <img
+      id="regQR"
+      src="assets/robosoccer-qr.png"
+      alt="Registration QR"
+      style="display:block; margin:0 auto 14px auto; width:220px; height:220px; background:#fff; padding:12px; border-radius:12px; box-shadow:0 10px 30px rgba(2,6,23,0.12); image-rendering:pixelated;"
+    />
+    <p class="muted" id="regLinkShown" style="font-size:1rem; text-align:center; margin-bottom:12px; word-break:break-all;"></p>
+    <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-bottom:16px;">
+      <button class="btn" id="openQRBtn" style="font-size:1.09rem; padding:12px 26px;">Open QR</button>
+      <button class="btn secondary" id="copyLinkBtn" style="font-size:1.09rem; padding:12px 26px;">Copy Link</button>
+      <button class="btn secondary" id="downloadRules2" style="font-size:1.09rem; padding:12px 26px;">Download Rules</button>
+    </div>
+    <div style="width:100%; margin-top:10px; display:flex; flex-direction:column; align-items:center;">
+      <h4 style="margin-top:0; margin-bottom:6px; font-size:1.15rem; text-align:center;">Registration Details</h4>
+      <p class="muted" style="margin:4px 0; font-size:1rem;">Opens: 14/10/2025</p>
+      <p class="muted" style="margin:4px 0; font-size:1rem;">Closes: 08/11/2025 23:59 hrs</p>
+      <p class="muted" style="margin:4px 0; font-size:1rem;">Fee: ₹500 per team</p>
+      <p class="muted" style="margin:4px 0; font-size:1rem;">Contact: events@robosoccer.org</p>
+    </div>
+  </div>
+</section>
 
       <!-- REGISTER
     <section id="register">
@@ -970,40 +924,118 @@
       </div>
     </section> -->
       <!-- ORGANIZING COMMITTEE -->
-      <div style="flex:2; min-width:480px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-  <h3 style="margin:0 0 14px 0; font-size:1.5rem; text-align:center;">Organizing Committee</h3>
-  <table style="border-collapse:collapse; font-size:1.08rem; color:var(--text); background:transparent; margin-bottom:10px; box-shadow:0 4px 18px rgba(2,6,23,0.09); text-align:center;">
-    <thead>
-      <tr style="color:var(--accent); border-bottom:2px solid var(--muted);">
-        <th style="padding:10px 8px; text-align:center;">Name</th>
-        <th style="padding:10px 8px; text-align:center;">Role</th>
-        <th style="padding:10px 8px; text-align:center;">Phone</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="padding:10px 8px; text-align:center;">Arpit Srivastav</td>
-        <td style="padding:10px 8px; text-align:center;">Event Head</td>
-        <td style="padding:10px 8px; text-align:center;">+91-9696579460</td>
-      </tr>
-      <tr>
-        <td style="padding:10px 8px; text-align:center;">Aman Choudhary</td>
-        <td style="padding:10px 8px; text-align:center;">Logistics & Venue</td>
-        <td style="padding:10px 8px; text-align:center;">+91-7987347287</td>
-      </tr>
-      <tr>
-        <td style="padding:10px 8px; text-align:center;">Pranjal Chaturvedi</td>
-        <td style="padding:10px 8px; text-align:center;">Media & Registrations</td>
-        <td style="padding:10px 8px; text-align:center;">+91-7878330376</td>
-      </tr>
-      <tr>
-        <td style="padding:10px 8px; text-align:center;">NO NAME</td>
-        <td style="padding:10px 8px; text-align:center;">Technical Coordinator</td>
-        <td style="padding:10px 8px; text-align:center;">+91-99887-65432</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+      <div
+        style="
+          flex: 2;
+          min-width: 480px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+         
+        <h3 style="margin: 0 0 14px 0; font-size: 1.5rem; text-align: center">
+          Organizing Committee
+        </h3>
+         
+        <table
+          style="
+            border-collapse: collapse;
+            font-size: 1.08rem;
+            color: var(--text);
+            background: transparent;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 18px rgba(2, 6, 23, 0.09);
+            text-align: center;
+          "
+        >
+             
+          <thead>
+                 
+            <tr
+              style="
+                color: var(--accent);
+                border-bottom: 2px solid var(--muted);
+              "
+            >
+                     
+              <th style="padding: 10px 8px; text-align: center">Name</th>
+                     
+              <th style="padding: 10px 8px; text-align: center">Role</th>
+                     
+              <th style="padding: 10px 8px; text-align: center">Phone</th>
+                   
+            </tr>
+               
+          </thead>
+             
+          <tbody>
+                 
+            <tr>
+                     
+              <td style="padding: 10px 8px; text-align: center">
+                Arpit Srivastav
+              </td>
+                     
+              <td style="padding: 10px 8px; text-align: center">Event Head</td>
+                     
+              <td style="padding: 10px 8px; text-align: center">
+                +91-9696579460
+              </td>
+                   
+            </tr>
+                 
+            <tr>
+                     
+              <td style="padding: 10px 8px; text-align: center">
+                Aman Choudhary
+              </td>
+                     
+              <td style="padding: 10px 8px; text-align: center">
+                Logistics & Venue
+              </td>
+                     
+              <td style="padding: 10px 8px; text-align: center">
+                +91-7987347287
+              </td>
+                   
+            </tr>
+                 
+            <tr>
+                     
+              <td style="padding: 10px 8px; text-align: center">
+                Pranjal Chaturvedi
+              </td>
+                     
+              <td style="padding: 10px 8px; text-align: center">
+                Media & Registrations
+              </td>
+                     
+              <td style="padding: 10px 8px; text-align: center">
+                +91-7878330376
+              </td>
+                   
+            </tr>
+                 
+            <tr>
+                     
+              <td style="padding: 10px 8px; text-align: center">NO NAME</td>
+                     
+              <td style="padding: 10px 8px; text-align: center">
+                Technical Coordinator
+              </td>
+                     
+              <td style="padding: 10px 8px; text-align: center">
+                +91-99887-65432
+              </td>
+                   
+            </tr>
+               
+          </tbody>
+           
+        </table>
+      </div>
 
       <!-- CONTACT
     <section id="contact">
@@ -1066,7 +1098,7 @@
             justify-content: center;
           "
         >
-          <div class="sim-option" id="demoCarOption">🏎 Demo Car Simulation</div>
+          <div class="sim-option" id="demoCarOption">🏎 Demo Match Simulation</div>
           <div class="sim-option secondary" id="arenaOption">
             ⚽ 3D Arena Simulation
           </div>
@@ -1103,445 +1135,377 @@
         </div>
       </div>
     </div>
-<!--------------------------------------------------SCRIPT------------------------------------------------------------------>
+    <!--------------------------------------------------SCRIPT------------------------------------------------------------------>
     <script>
-      // ====== Utilities & theme ======
-      const body = document.body;
-      const simFull = document.getElementById("simFull");
-      const simStage = document.getElementById("simStage");
-      const modeBadge = document.getElementById("modeBadge");
+// ========== Utility: Safe Button Listener ==========
+function addBtnListener(id, fn) {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', fn);
+}
 
-      // Theme restore
-      const saved = localStorage.getItem("rs-theme") || "dark";
-      if (saved === "light") body.classList.add("light");
+// ========== Smooth Scroll for navigation buttons ==========
+addBtnListener("viewScheduleBtn", () => {
+  const schedule = document.getElementById("schedule");
+  if (schedule) schedule.scrollIntoView({ behavior: "smooth" });
+});
+addBtnListener("viewRulesBtn", () => {
+  const rules = document.getElementById("rules");
+  if (rules) rules.scrollIntoView({ behavior: "smooth" });
+});
 
-      document.getElementById("themeToggle").addEventListener("click", () => {
-        body.classList.toggle("light");
-        localStorage.setItem(
-          "rs-theme",
-          body.classList.contains("light") ? "light" : "dark"
-        );
-      });
+// ========== Simulation Modal Controls ==========
+const simFull = document.getElementById("simFull");
+const simStage = document.getElementById("simStage");
+const modeBadge = document.getElementById("modeBadge");
+const simCanvas = document.getElementById("simCanvas");
 
-      // Nav anchors smooth scroll
-      document.querySelectorAll("a.nav-link").forEach((a) => {
-        a.addEventListener("click", (e) => {
-          e.preventDefault();
-          const id = a.getAttribute("href");
-          const el = document.querySelector(id);
-          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-      });
+function openChoiceModal() {
+  if (simFull) {
+    simFull.classList.add("show");
+    simFull.setAttribute("aria-hidden", "false");
+  }
+}
+function closeChoiceModal() {
+  if (simFull) {
+    simFull.classList.remove("show");
+    simFull.setAttribute("aria-hidden", "true");
+  }
+}
+function showSimStage() {
+  closeChoiceModal();
+  if (simStage) {
+    simStage.classList.add("show");
+    simStage.setAttribute("aria-hidden", "false");
+  }
+}
+function hideSimStage() {
+  if (simStage) {
+    simStage.classList.remove("show");
+    simStage.setAttribute("aria-hidden", "true");
+    if (simCanvas) simCanvas.innerHTML = "";
+  }
+}
 
-      // ====== Start Simulation logic (fullscreen + choice modal) ======
-      const startSimBtn = document.getElementById("startSimBtn");
-      const previewStartBtn = document.getElementById("previewStartBtn");
-      const quickStartBtn = document.getElementById("quickStartBtn");
-      const arenaStartLarge = document.getElementById("arenaStartLarge");
-      const simCancel = document.getElementById("simCancel");
-      const demoCarOption = document.getElementById("demoCarOption");
-      const arenaOption = document.getElementById("arenaOption");
-      const exitSimBtn = document.getElementById("exitSimBtn");
+// ========== Simulation Trigger Buttons ==========
+function startSimulationFlow() {
+  try {
+    if (document.fullscreenElement == null) {
+      document.documentElement.requestFullscreen();
+    }
+  } catch (err) {
+    console.warn("Fullscreen request failed", err);
+  }
+  openChoiceModal();
+}
 
-      function openChoiceModal() {
-        simFull.classList.add("show");
-        simFull.setAttribute("aria-hidden", "false");
+["startSimBtn", "previewStartBtn", "quickStartBtn", "arenaStartLarge"].forEach(id => {
+  addBtnListener(id, startSimulationFlow);
+});
+
+addBtnListener("simCancel", async () => {
+  closeChoiceModal();
+  try { if (document.fullscreenElement) await document.exitFullscreen(); } catch (e) {}
+});
+addBtnListener("exitSimBtn", async () => {
+  hideSimStage();
+  try { if (document.fullscreenElement) await document.exitFullscreen(); } catch (e) {}
+});
+
+// When fullscreen changes (ESC, browser event)
+document.addEventListener("fullscreenchange", () => {
+  if (!document.fullscreenElement) {
+    closeChoiceModal();
+    hideSimStage();
+  }
+});
+
+// ========== Demo Car Simulation: Two Bots Competing ==========
+function createDemoCarSimulation() {
+  showSimStage();
+  if (modeBadge) modeBadge.textContent = "Competitive Bot Match";
+  if (!simCanvas) return;
+  simCanvas.innerHTML = "";
+
+  // Arena
+  const field = document.createElement("div");
+  field.className = "field";
+  field.style.position = "relative";
+  field.style.overflow = "hidden";
+
+  // Field graphics
+  ["center-line", "center-circle", "penalty-box-left", "penalty-box-right", "goal-left", "goal-right"].forEach(cls => {
+    const e = document.createElement("div");
+    e.className = cls.includes("line") ? "line " + cls : cls;
+    field.appendChild(e);
+  });
+
+  // Helper: bot creation
+  function makeBot(x, y, color, name, rotate) {
+    const botWrap = document.createElement("div");
+    botWrap.className = "car-wrapper";
+    botWrap.style.position = "absolute";
+    botWrap.style.left = x + "%";
+    botWrap.style.top = y + "%";
+    botWrap.style.width = "150px";
+    botWrap.style.height = "80px";
+    const bot = document.createElement("div");
+    bot.className = "car";
+    bot.style.background = "none";
+    bot.style.transform = rotate ? "rotateY(180deg)" : "";
+    bot.innerHTML =
+      `<div class="body" style="background:linear-gradient(180deg,${color},#fff3);" ></div>
+       <div class="cockpit"></div>
+       <div class="spoiler"></div>
+       <div class="wheel left"></div>
+       <div class="wheel right"></div>`;
+    botWrap.appendChild(bot);
+
+    // Bot label
+    const label = document.createElement("div");
+    label.className = "label";
+    label.textContent = name;
+    label.style.position = "absolute";
+    label.style.left = "50%";
+    label.style.top = "-28px";
+    label.style.transform = "translateX(-50%)";
+    label.style.padding = "4px 16px";
+    label.style.fontWeight = "900";
+    label.style.fontSize = "1rem";
+    label.style.background = `linear-gradient(90deg,${color},#fff3 80%)`;
+    label.style.color = "#02121a";
+    botWrap.appendChild(label);
+
+    return botWrap;
+  }
+
+  // Initial positions
+  let bot1Pos = { x: 19, y: 57 };
+  let bot2Pos = { x: 68, y: 41 };
+  let ballPos = { x: 54, y: 49 };
+
+  // Create bots and ball
+  const bot1 = makeBot(bot1Pos.x, bot1Pos.y, "#ff4e4e", "Red Bot", false);
+  const bot2 = makeBot(bot2Pos.x, bot2Pos.y, "#2196f3", "Blue Bot", true);
+  const ball = document.createElement("div");
+  ball.className = "ball";
+  ball.style.position = "absolute";
+  ball.style.width = "46px";
+  ball.style.height = "46px";
+  ball.style.left = ballPos.x + "%";
+  ball.style.top = ballPos.y + "%";
+
+  field.appendChild(bot1);
+  field.appendChild(bot2);
+  field.appendChild(ball);
+
+  // Field labels
+  const lPitch = document.createElement("div");
+  lPitch.className = "label pitch";
+  lPitch.textContent = "Pitch";
+  const lGoalL = document.createElement("div");
+  lGoalL.className = "label goal-left";
+  lGoalL.textContent = "Goalpost";
+  const lGoalR = document.createElement("div");
+  lGoalR.className = "label goal-right";
+  lGoalR.textContent = "Goalpost";
+  [lPitch, lGoalL, lGoalR].forEach(label => field.appendChild(label));
+  const dim = document.createElement("div");
+  dim.className = "label dim";
+  dim.style.position = "absolute";
+  dim.style.right = "8px";
+  dim.style.top = "8px";
+  dim.textContent = "Dimensions: 6 m × 4 m";
+  field.appendChild(dim);
+
+  simCanvas.appendChild(field);
+
+  // Animate bots toward ball, then ball into goal
+  let playing = true;
+  let bot1Active = true;
+  let bot2Active = true;
+  let goalScored = false;
+
+  function moveToward(from, to, speed) {
+    let dx = to.x - from.x;
+    let dy = to.y - from.y;
+    let dist = Math.sqrt(dx*dx + dy*dy);
+    if (dist < speed) return { x: to.x, y: to.y };
+    return {
+      x: from.x + (dx/dist)*speed,
+      y: from.y + (dy/dist)*speed
+    };
+  }
+
+  function render() {
+    bot1.style.left = bot1Pos.x + "%";
+    bot1.style.top = bot1Pos.y + "%";
+    bot2.style.left = bot2Pos.x + "%";
+    bot2.style.top = bot2Pos.y + "%";
+    ball.style.left = ballPos.x + "%";
+    ball.style.top = ballPos.y + "%";
+  }
+
+  function inField(pos) {
+    pos.x = Math.max(4, Math.min(96, pos.x));
+    pos.y = Math.max(18, Math.min(78, pos.y));
+    return pos;
+  }
+
+  function gameLoop() {
+    if (!playing) return;
+    if (!goalScored) {
+      if (bot1Active) {
+        bot1Pos = moveToward(bot1Pos, ballPos, 0.35);
+        bot1Pos = inField(bot1Pos);
       }
-      function closeChoiceModal() {
-        simFull.classList.remove("show");
-        simFull.setAttribute("aria-hidden", "true");
+      if (bot2Active) {
+        bot2Pos = moveToward(bot2Pos, ballPos, 0.29);
+        bot2Pos = inField(bot2Pos);
       }
-
-      // Request full screen and show choice modal
-      async function startSimulationFlow() {
-        try {
-          // request fullscreen on body (replace all contents visually)
-          if (document.fullscreenElement == null) {
-            await document.documentElement.requestFullscreen();
-          }
-        } catch (err) {
-          console.warn("Fullscreen request failed", err);
-        }
-        openChoiceModal();
+      let b1dist = Math.sqrt(Math.pow(ballPos.x-bot1Pos.x,2)+Math.pow(ballPos.y-bot1Pos.y,2));
+      let b2dist = Math.sqrt(Math.pow(ballPos.x-bot2Pos.x,2)+Math.pow(ballPos.y-bot2Pos.y,2));
+      if (b1dist<2.8 || b2dist<2.8) {
+        goalScored = true;
       }
-
-      // Attach triggers
-      [startSimBtn, previewStartBtn, quickStartBtn, arenaStartLarge].forEach(
-        (btn) => {
-          btn.addEventListener("click", startSimulationFlow);
-        }
-      );
-
-      // Cancel
-      simCancel.addEventListener("click", async () => {
-        closeChoiceModal();
-        try {
-          if (document.fullscreenElement) await document.exitFullscreen();
-        } catch (e) {}
-      });
-
-      // ESC key also handled by fullscreenchange/keydown
-      document.addEventListener("fullscreenchange", () => {
-        // If user exits fullscreen with ESC, ensure overlays are closed
-        if (!document.fullscreenElement) {
-          closeChoiceModal();
-          hideSimStage();
-        }
-      });
-
-      // ===== Simulation Mode handlers =====
-      const simCanvas = document.getElementById("simCanvas");
-
-      function showSimStage() {
-        closeChoiceModal();
-        simStage.classList.add("show");
-        simStage.setAttribute("aria-hidden", "false");
+    } else {
+      if (ballPos.x < 92) {
+        ballPos.x += 0.62;
+        ballPos.y += 0.02*(50-ballPos.y);
+        ballPos = inField(ballPos);
       }
-      function hideSimStage() {
-        simStage.classList.remove("show");
-        simStage.setAttribute("aria-hidden", "true");
-        // clear canvas contents
-        simCanvas.innerHTML = "";
-      }
+    }
+    render();
+    requestAnimationFrame(gameLoop);
+  }
 
-      // Exit Simulation (button)
-      exitSimBtn.addEventListener("click", async () => {
-        hideSimStage();
-        try {
-          if (document.fullscreenElement) await document.exitFullscreen();
-        } catch (e) {}
-      });
+  bot1.querySelector(".car").addEventListener("click", () => { bot1Active = !bot1Active; });
+  bot2.querySelector(".car").addEventListener("click", () => { bot2Active = !bot2Active; });
 
-      // Demo Car Simulation creation
-      function createDemoCarSimulation() {
-        showSimStage();
-        modeBadge.textContent = "Demo Car Simulation";
-        simCanvas.innerHTML = ""; // clear
-        // create field
-        const field = document.createElement("div");
-        field.className = "field";
-        // add lines
-        const centerLine = document.createElement("div");
-        centerLine.className = "line center-line";
-        field.appendChild(centerLine);
-        const centerCircle = document.createElement("div");
-        centerCircle.className = "center-circle";
-        field.appendChild(centerCircle);
-        const penaltyL = document.createElement("div");
-        penaltyL.className = "penalty-box-left";
-        field.appendChild(penaltyL);
-        const penaltyR = document.createElement("div");
-        penaltyR.className = "penalty-box-right";
-        field.appendChild(penaltyR);
-        const goalL = document.createElement("div");
-        goalL.className = "goal-left";
-        field.appendChild(goalL);
-        const goalR = document.createElement("div");
-        goalR.className = "goal-right";
-        field.appendChild(goalR);
+  render();
+  gameLoop();
+}
 
-        // Add demo CSS car
-        const carWrap = document.createElement("div");
-        carWrap.className = "car-wrapper";
-        const car = document.createElement("div");
-        car.className = "car";
-        car.innerHTML =
-          '<div class="body"></div><div class="cockpit"></div><div class="spoiler"></div><div class="wheel left"></div><div class="wheel right"></div>';
-        carWrap.appendChild(car);
+// ========== Simulation Mode Selector Buttons ==========
+addBtnListener("demoCarOption", createDemoCarSimulation);
+addBtnListener("arenaOption", createArenaOnlySimulation);
 
-        // place car onto field
-        field.appendChild(carWrap);
+// Arena-only version for completeness
+function createArenaOnlySimulation() {
+  showSimStage();
+  if (modeBadge) modeBadge.textContent = "3D Arena Simulation";
+  if (!simCanvas) return;
+  simCanvas.innerHTML = "";
+  const field = document.createElement("div");
+  field.className = "field";
+  ["center-line", "center-circle", "penalty-box-left", "penalty-box-right", "goal-left", "goal-right"].forEach(cls => {
+    const e = document.createElement("div");
+    e.className = cls.includes("line") ? "line " + cls : cls;
+    field.appendChild(e);
+  });
+  const ball = document.createElement("div");
+  ball.className = "ball";
+  field.appendChild(ball);
+  const lPitch = document.createElement("div");
+  lPitch.className = "label pitch";
+  lPitch.textContent = "Pitch";
+  const lGoalL = document.createElement("div");
+  lGoalL.className = "label goal-left";
+  lGoalL.textContent = "Goalpost";
+  const lGoalR = document.createElement("div");
+  lGoalR.className = "label goal-right";
+  lGoalR.textContent = "Goalpost";
+  const lBall = document.createElement("div");
+  lBall.className = "label ball";
+  lBall.textContent = "Default Ball Position";
+  const dim = document.createElement("div");
+  dim.className = "label dim";
+  dim.style.position = "absolute";
+  dim.style.right = "8px";
+  dim.style.top = "8px";
+  dim.textContent = "Dimensions: 6 m × 4 m";
+  [lPitch, lGoalL, lGoalR, lBall, dim].forEach(label => field.appendChild(label));
+  simCanvas.appendChild(field);
+}
 
-        // place ball too (optional)
-        const ball = document.createElement("div");
-        ball.className = "ball";
-        ball.style.left = "60%";
-        ball.style.top = "55%";
-        field.appendChild(ball);
+// ========== End of Button & Simulation JS ==========
+// === Register (QR) section button actions ===
+// Set your real registration link here if available
+const registrationLink = ""; // <-- e.g. "https://your-form.com" or leave blank
 
-        // labels
-        const lPitch = document.createElement("div");
-        lPitch.className = "label pitch";
-        lPitch.textContent = "Pitch";
-        const lGoalL = document.createElement("div");
-        lGoalL.className = "label goal-left";
-        lGoalL.textContent = "Goalpost";
-        const lGoalR = document.createElement("div");
-        lGoalR.className = "label goal-right";
-        lGoalR.textContent = "Goalpost";
-        field.appendChild(lPitch);
-        field.appendChild(lGoalL);
-        field.appendChild(lGoalR);
+// Helper: quick toast/notification
+function toast(msg){
+  const t = document.createElement("div");
+  t.textContent = msg;
+  t.style.position = "fixed";
+  t.style.left = "50%";
+  t.style.transform = "translateX(-50%)";
+  t.style.bottom = "30px";
+  t.style.padding = "10px 14px";
+  t.style.background = "linear-gradient(90deg,var(--accent),var(--accent-2))";
+  t.style.color = "#02121a";
+  t.style.borderRadius = "10px";
+  t.style.fontWeight = "600";
+  t.style.zIndex = 9999;
+  t.style.boxShadow = "0 10px 30px rgba(2,6,23,0.45)";
+  document.body.appendChild(t);
+  setTimeout(()=> t.style.opacity = "0.02", 1800);
+  setTimeout(()=> t.remove(), 2200);
+}
 
-        // add dimension badge
-        const dim = document.createElement("div");
-        dim.className = "label dim";
-        dim.style.position = "absolute";
-        dim.style.right = "8px";
-        dim.style.top = "8px";
-        dim.textContent = "Dimensions: 6 m × 4 m";
-        field.appendChild(dim);
+// Buttons
+const openBtn = document.getElementById("openQRBtn");
+const qrImg = document.getElementById("regQR");
+const copyBtn = document.getElementById("copyLinkBtn");
+const downloadBtn = document.getElementById("downloadRules2");
+const linkShown = document.getElementById("regLinkShown");
 
-        // append
-        simCanvas.appendChild(field);
+// Show registration link, if provided
+if (linkShown) {
+  if (registrationLink && registrationLink.trim()) {
+    linkShown.textContent = "Link: " + registrationLink.trim();
+  } else {
+    linkShown.textContent = "";
+  }
+}
 
-        // minor interactive: clicking car toggles spin
-        let spinning = true;
-        car.addEventListener("click", () => {
-          spinning = !spinning;
-          if (spinning) car.style.animationPlayState = "running";
-          else car.style.animationPlayState = "paused";
-        });
-      }
+// "Open QR" button: open QR image in new tab
+if (openBtn && qrImg) {
+  openBtn.addEventListener("click", () => {
+    window.open(qrImg.src, "_blank");
+  });
+}
 
-      // 3D Arena Simulation creation (no cars, only ball + labels + dimensions)
-      function createArenaOnlySimulation() {
-        showSimStage();
-        modeBadge.textContent = "3D Arena Simulation";
-        simCanvas.innerHTML = "";
-        const field = document.createElement("div");
-        field.className = "field";
-        // lines & features
-        const centerLine = document.createElement("div");
-        centerLine.className = "line center-line";
-        field.appendChild(centerLine);
-        const centerCircle = document.createElement("div");
-        centerCircle.className = "center-circle";
-        field.appendChild(centerCircle);
-        const penaltyL = document.createElement("div");
-        penaltyL.className = "penalty-box-left";
-        field.appendChild(penaltyL);
-        const penaltyR = document.createElement("div");
-        penaltyR.className = "penalty-box-right";
-        field.appendChild(penaltyR);
-        const goalL = document.createElement("div");
-        goalL.className = "goal-left";
-        field.appendChild(goalL);
-        const goalR = document.createElement("div");
-        goalR.className = "goal-right";
-        field.appendChild(goalR);
+// "Copy Link" button: copy registration link (or show error)
+if (copyBtn) {
+  copyBtn.addEventListener("click", async () => {
+    if (!registrationLink || !registrationLink.trim()) {
+      toast("No registration link set");
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(registrationLink.trim());
+      toast("Registration link copied");
+    } catch {
+      toast("Copy failed");
+    }
+  });
+}
 
-        // ball centered
-        const ball = document.createElement("div");
-        ball.className = "ball";
-        field.appendChild(ball);
+// "Download Rules" button: triggers download of rules from rules section.
+if (downloadBtn) {
+  downloadBtn.addEventListener("click", () => {
+    const rules = document.querySelectorAll("#rules ol li");
+    const rulesText = Array.from(rules).map((li, i) => (i+1) + ". " + li.innerText).join("\n\n");
+    const blob = new Blob([rulesText], {type:'text/plain'});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "RoboSoccer_Rules.txt";
+    a.click();
+    a.remove();
+    toast("Rules downloaded");
+  });
+}
 
-        // labels: pitch, goalpost(s), default ball position, dimensions
-        const lPitch = document.createElement("div");
-        lPitch.className = "label pitch";
-        lPitch.textContent = "Pitch";
-        const lGoalL = document.createElement("div");
-        lGoalL.className = "label goal-left";
-        lGoalL.textContent = "Goalpost";
-        const lGoalR = document.createElement("div");
-        lGoalR.className = "label goal-right";
-        lGoalR.textContent = "Goalpost";
-        const lBall = document.createElement("div");
-        lBall.className = "label ball";
-        lBall.textContent = "Default Ball Position";
-
-        const dim = document.createElement("div");
-        dim.className = "label dim";
-        dim.style.position = "absolute";
-        dim.style.right = "8px";
-        dim.style.top = "8px";
-        dim.textContent = "Dimensions: 6 m × 4 m";
-
-        field.appendChild(lPitch);
-        field.appendChild(lGoalL);
-        field.appendChild(lGoalR);
-        field.appendChild(lBall);
-        field.appendChild(dim);
-
-        simCanvas.appendChild(field);
-      }
-
-      // Wire mode buttons
-      demoCarOption.addEventListener("click", () => {
-        createDemoCarSimulation();
-      });
-      arenaOption.addEventListener("click", () => {
-        createArenaOnlySimulation();
-      });
-
-      // If user presses Escape we will close the stage (fullscreenchange handles too)
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          // allow default fullscreen exit; additionally hide UI if needed
-          // hideSimStage() will be called via fullscreenchange
-        }
-      });
-
-      // When fullscreen starts, focus modal
-      document.addEventListener("fullscreenchange", () => {
-        if (document.fullscreenElement) {
-          // show choice modal if not already visible
-          if (
-            !simFull.classList.contains("show") &&
-            !simStage.classList.contains("show")
-          ) {
-            openChoiceModal();
-          }
-        } else {
-          // cleanup UI if not fullscreen
-          closeChoiceModal();
-          hideSimStage();
-        }
-      });
-
-      // Cancel / exit buttons ensure proper cleanup
-      document
-        .getElementById("simCancel")
-        .addEventListener("click", async () => {
-          closeChoiceModal();
-          try {
-            if (document.fullscreenElement) await document.exitFullscreen();
-          } catch (e) {}
-        });
-
-      // Exit sim button
-      exitSimBtn.addEventListener("click", async () => {
-        hideSimStage();
-        try {
-          if (document.fullscreenElement) await document.exitFullscreen();
-        } catch (e) {}
-      });
-
-      // ===== Register (QR) helpers =====
-      const registrationLink = "YOUR_REGISTRATION_LINK"; // e.g., paste the form link string; or leave '' to hide text
-
-      // Minimal toast (kept small and theme-matched)
-      function toast(msg) {
-        const t = document.createElement("div");
-        t.textContent = msg;
-        t.style.position = "fixed";
-        t.style.left = "50%";
-        t.style.transform = "translateX(-50%)";
-        t.style.bottom = "30px";
-        t.style.padding = "10px 14px";
-        t.style.background =
-          "linear-gradient(90deg,var(--accent),var(--accent-2))";
-        t.style.color = "#02121a";
-        t.style.borderRadius = "10px";
-        t.style.zIndex = 9999;
-        t.style.boxShadow = "0 10px 30px rgba(2,6,23,0.45)";
-        document.body.appendChild(t);
-        setTimeout(() => (t.style.opacity = "0.02"), 1800);
-        setTimeout(() => t.remove(), 2200);
-      }
-
-      (function initQRHelpers() {
-        const qrImg = document.getElementById("regQR");
-        const linkShown = document.getElementById("regLinkShown");
-        const copyBtn = document.getElementById("copyLinkBtn");
-        const saveBtn = document.getElementById("saveQRBtn");
-
-        // Show link if provided
-        if (linkShown) {
-          if (registrationLink && registrationLink.trim()) {
-            linkShown.textContent = "Link: " + registrationLink.trim();
-          } else {
-            linkShown.textContent = "";
-          }
-        }
-
-        // Copy link
-        if (copyBtn) {
-          copyBtn.addEventListener("click", async () => {
-            if (!registrationLink || !registrationLink.trim()) {
-              toast("No registration link set");
-              return;
-            }
-            try {
-              await navigator.clipboard.writeText(registrationLink.trim());
-              toast("Registration link copied");
-            } catch {
-              toast("Copy failed");
-            }
-          });
-        }
-
-        const openBtn = document.getElementById("openQRBtn");
-        if (openBtn && qrImg) {
-          openBtn.addEventListener("click", () => {
-            window.open(qrImg.src, "_blank");
-          });
-        }
-
-        // // Small helpers: register submit + messages
-        // function toast(msg){
-        //   const t = document.createElement('div'); t.textContent = msg; t.style.position='fixed'; t.style.left='50%'; t.style.transform='translateX(-50%)'; t.style.bottom='30px'; t.style.padding='10px 14px'; t.style.background='linear-gradient(90deg,var(--accent),var(--accent-2))'; t.style.color='#02121a'; t.style.borderRadius='10px'; t.style.zIndex=9999; document.body.appendChild(t);
-        //   setTimeout(()=> t.style.opacity = '0.01', 2200); setTimeout(()=> t.remove(), 2600);
-        // }
-
-        // document.getElementById('submitRegister').addEventListener('click', ()=>{
-        //   const team = document.getElementById('teamName').value.trim();
-        //   const college = document.getElementById('college').value.trim();
-        //   const email = document.getElementById('email').value.trim();
-        //   if(!team || !college || !email){ toast('Please fill Team, College & Email'); return; }
-        //   toast('Registration submitted — confirmation sent to ' + email);
-        //   document.getElementById('teamName').value=''; document.getElementById('college').value=''; document.getElementById('email').value='';
-        // });
-
-        document
-          .getElementById("downloadRules2")
-          .addEventListener("click", () => {
-            const rulesText = Array.from(
-              document.querySelectorAll("#rules ol li")
-            )
-              .map((li, i) => i + 1 + ". " + li.innerText)
-              .join("\n\n");
-            const blob = new Blob([rulesText], { type: "text/plain" });
-            const a = document.createElement("a");
-            a.href = URL.createObjectURL(blob);
-            a.download = "RoboSoccer_Rules.txt";
-            a.click();
-            a.remove();
-            toast("Rules downloaded");
-          });
-
-        // basic preview 'Start' uses same flow
-        document
-          .getElementById("previewStartBtn")
-          .addEventListener("click", startSimulationFlow);
-
-        // small helpers: view schedule/rules buttons
-        document
-          .getElementById("viewScheduleBtn")
-          .addEventListener("click", () =>
-            document
-              .getElementById("schedule")
-              .scrollIntoView({ behavior: "smooth" })
-          );
-        document
-          .getElementById("viewRulesBtn")
-          .addEventListener("click", () =>
-            document
-              .getElementById("rules")
-              .scrollIntoView({ behavior: "smooth" })
-          );
-
-        // Accessibility: ensure modal close on click outside
-        simFull.addEventListener("click", (e) => {
-          if (e.target === simFull) {
-            // close fullscreen and modal
-            closeChoiceModal();
-            if (document.fullscreenElement)
-              document.exitFullscreen().catch(() => {});
-          }
-        });
-
-        // If user leaves fullscreen via browser, ensure UI hidden
-        document.addEventListener("visibilitychange", () => {
-          if (
-            document.visibilityState === "visible" &&
-            !document.fullscreenElement
-          ) {
-            closeChoiceModal();
-            hideSimStage();
-          }
-        });
-      })();
     </script>
   </body>
 </html>
